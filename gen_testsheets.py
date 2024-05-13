@@ -6,6 +6,7 @@ import csv
 import sys
 import subprocess
 
+
 ranks = {
     'Y': ('yellow', '8th Kup / Yellow Belt'),
     'O': ('orange', '7th Kup / Orange Belt'),
@@ -22,62 +23,63 @@ ranks = {
 
 
 def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--full", default=False, action="store_true", help="Don't collapse headers")
+    args = parser.parse_args()
+
+
     outdir = sys.path[0] + "/test_sheets"
     # get our test sheet template
     template = Template((Path(sys.path[0]) / "template.html").read_text())
 
+    # walk the ranks, generating each sheet as we go.
     for rank in ranks:
-        tables = {}
-        subtitles = {}
-        cur_table = None
-        with open(Path(sys.path[0]) / "inventory.csv",newline='') as csvfile:
-            rdr = csv.DictReader(csvfile)
-            for row in rdr:
-                if row['Label'] == '':
-                    # this row has no label, so we'll skip it.
-                    continue
-                if row[rank] != '':
-                    if row['Type'] == 'T':
-                        cur_table = row['Label']
-                        if cur_table not in tables:
-                            tables[cur_table] = []                    
-                    elif row['Type'] == 'S':
-                        subtitles[cur_table] = row['Label']
-                    else:
-                        tables[cur_table].append([row['Type'], row['Label'], row[rank]])
-                
-        # we now have all of the tables in memory...generate the HTML for them.
+        print(f"Generating {ranks[rank]}")
+        data = read_inventory(Path(sys.path[0]) / "inventory.csv", rank)
+
+        # generate the HTML tables for the data...
         html_tables = []
-        for tablename, tabledata in tables.items():
-            if tablename in subtitles:
-                subtitle = f"""<br/><span class="subtitle">{subtitles[tablename]}</span>"""
-            else:
-                subtitle=""
-            html = f"""
-        <table class="ttable">       
-            <caption>{tablename}{subtitle}</caption>
-            <colgroup>
-                <col class="narrow"/>
-                <col class="narrow"/>
-                <col/>
-            </colgroup>
-            <tr><td>&nbsp;</td><th>Score</th><th>Comments</th></tr>"""
-            collapse = False
-            for row in tabledata:
-                if row[0] == 'H':
-                    if collapse:
-                        html += "<tr><td/>&nbsp;<td/><td/></tr>"
-                    html += f"""<tr><td class="theader">{row[1]}</td><td></td><td></td></tr>"""
-                    collapse = row[2] == 'C'
-                else:
-                    if (not collapse) or (collapse and row[2] == 'N'):
-                        html += f"""<tr><td>{row[1]}</td><td></td><td></td></tr>"""                
-            html += "</table>"            
+        for tdata in data['tables']:
+            html = """<table class="ttable">\n"""
+            title = tdata['title']
+            if tdata['subtitle']:
+                # append the subtitle
+                title += f"""</br><span class="subtitle">{tdata['subtitle']}</span>"""
+            html += f"""  <caption>{title}</caption>\n"""
+            html += f"""  <colgroup><col class="narrow"/><col class="narrow"/><col/></colgroup>\n"""
+            html += f"""  <tr><td>&nbsp;</td><th>Score</th><th>Comments</th></tr>\n"""
+            for header in tdata['headers']:
+                if not header['techniques']:
+                    # skip empty headers
+                    continue
+                if header['label'] != '':
+                    html += f"""  <tr><td class="theader">{header['label']}</td><td></td><td></td></tr>\n"""
+                header_rows = 0
+                for t in header['techniques']:
+                    if args.full or header['type'] == 'X' or (header['type'] == 'C' and t['type'] != 'X'):
+                        # either show all techniques or only show those that 
+                        # are new or have a count
+                        label = t['label']
+                        if t['type'] == 'N':
+                            # new technique
+                            label = f'<span class="new">{label}</span>'
+                        elif t['type'] != 'X':
+                            label = f'{label} ({t["type"]})'
+                        html += f"  <tr><td>{label}</td><td></td><td></td></tr>\n"
+                        header_rows += 1
+                
+                if header['type'] == 'C' and header_rows == 0:
+                    # add a blank row for comments.
+                    html += "  <tr><td>&nbsp;</td><td></td><td></td></tr>\n"
+
+            html += """</table>"""
             html_tables.append(html)
 
         html_file = f"{outdir}/{ranks[rank][0]}.html"
         with open(html_file, "w") as f:
-            f.write(template.safe_substitute(title=ranks[rank][1], tables='\n'.join(html_tables)))
+            f.write(template.safe_substitute(title=ranks[rank][1], 
+                                             tables='\n'.join(html_tables),
+                                             revision=data['revision']))
 
         # generate the word doc
         subprocess.run(['pandoc', html_file, "-o", f"{outdir}/{ranks[rank][0]}.docx"])
@@ -85,8 +87,49 @@ def main():
         subprocess.run(['weasyprint', html_file, f"{outdir}/{ranks[rank][0]}.pdf"])
 
 
+def read_inventory(invfile, rank):        
+    # read the inventory and return the data for the given rank
+    revision = "No Revision"
+    tables = []                
+    with open(invfile, newline='') as csvfile:
+        rdr = csv.DictReader(csvfile)
+        for row in rdr:
+            # make sure that leading/trailing whitespace is stripped...
+            row = {k: v.strip() for k, v in row.items()}
+            if row['Type'] == 'R':
+                # this is the test sheet revision
+                revision = row['Label']
+                continue
 
+            if row['Type'] == '#' or row['Label'] == '' or row[rank] == '':
+                # ignore rows that don't have a label or are a comment, or
+                # are blank for the rank we're looking for.
+                continue
 
+            elif row['Type'] == 'T':
+                # create a new table
+                tables.append({'title': row['Label'],
+                                'subtitle': None,
+                                'headers': [{'label': '',
+                                             'type': 'X',
+                                             'techniques': []}]})
+                                    
+            elif row['Type'] == 'S':
+                # set the subtitle of the current table
+                tables[-1]['subtitle'] = row['Label']
+
+            elif row['Type'] == 'H':
+                # start a new header section
+                tables[-1]['headers'].append({'label': row['Label'],
+                                              'type': row[rank],
+                                              'techniques': []})
+            else:
+                # this must just be a technique...add it where needed.
+                tables[-1]['headers'][-1]['techniques'].append({'type': row[rank],
+                                                                'label': row['Label']})
+
+    return {'revision': revision,
+            'tables': tables}
 
 
 if __name__ == "__main__":
