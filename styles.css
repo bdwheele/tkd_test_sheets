@@ -1,0 +1,66 @@
+/* Generic Cascading style sheet for test sheets
+   Reference documentation
+      * https://www.w3.org/TR/css-page-3
+*/
+@page {
+    size: letter portrait;
+    margin: 0.25in;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10pt;
+}
+
+
+table {
+    page-break-inside: avoid;   
+    width: 100%; 
+}
+
+table.title {
+    border: 1px solid black;
+    border-collapse: collapse;
+
+}
+
+table.title th {
+    font-size: 14pt;
+    text-align: center;
+}
+
+table.title tr, table.title td {
+    border: 1px solid black;
+}
+
+
+caption {
+    font-size: 10pt;
+    text-align: center;
+    padding-top: 10pt;
+    font-weight: bold;
+}
+table.ttable {
+    border: 1px solid black;
+    border-collapse: collapse;
+    font-size: 8pt;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+table.ttable tr, table.ttable td, table.ttable th {
+    border: 1px solid gray; 
+}
+
+table .theader {
+    font-weight: bold;
+}
+
+.narrow {
+    width: 1px;
+    white-space: nowrap;
+}
+
+span.signature {
+    border-bottom: 1pt solid;
+    display: inline-block;
+}
