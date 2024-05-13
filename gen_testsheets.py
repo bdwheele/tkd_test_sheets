@@ -53,13 +53,13 @@ def main():
                     # skip empty headers
                     continue
                 if header['label'] != '':
-                    html += f"""  <tr><td class="theader">{header['label']}</td><td></td><td></td></tr>\n"""
+                    html += f"""  <tr><td class="theader">{nbsp(header['label'])}</td><td></td><td></td></tr>\n"""
                 header_rows = 0
                 for t in header['techniques']:
                     if args.full or header['type'] == 'X' or (header['type'] == 'C' and t['type'] != 'X'):
                         # either show all techniques or only show those that 
                         # are new or have a count
-                        label = t['label']
+                        label = nbsp(t['label'])
                         if t['type'] == 'N':
                             # new technique
                             label = f'<span class="new">{label}</span>'
@@ -86,6 +86,9 @@ def main():
         # generate the pdf
         subprocess.run(['weasyprint', html_file, f"{outdir}/{ranks[rank][0]}.pdf"])
 
+
+def nbsp(text):
+    return text.replace(' ', '&nbsp;')
 
 def read_inventory(invfile, rank):        
     # read the inventory and return the data for the given rank
