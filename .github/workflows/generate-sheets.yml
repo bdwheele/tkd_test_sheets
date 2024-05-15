@@ -1,0 +1,28 @@
+name: generate-sheets
+run-name: ${{github.actor}} is regenerating the test sheets
+on:
+  push:
+    paths:
+      - 'inventory.csv'
+      - 'template.html'
+      - 'gen_testsheets.py'
+jobs:
+  generate_sheets:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+      - run: |
+          apt-get update
+          DEBIAN_FRONTEND=noninteractive apt-get -qq install -y weasyprint pandoc
+          ./gen_testsheets.py
+      #- uses: stefanweifel/git-auto-commit-action@v4
+      #  with:
+      #    commit_message: Regenerated Sheets
+      - uses: actions/upload-artifact@v3
+        with:
+          name: test_sheets
+          path: test_sheets
+          
