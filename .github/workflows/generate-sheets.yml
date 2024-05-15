@@ -15,8 +15,8 @@ jobs:
         with:
           python-version: '3.x'
       - run: |
-          apt-get update
-          DEBIAN_FRONTEND=noninteractive apt-get -qq install -y weasyprint pandoc
+          sudo apt-get update
+          DEBIAN_FRONTEND=noninteractive sudo apt-get -qq install -y weasyprint pandoc
           ./gen_testsheets.py
       #- uses: stefanweifel/git-auto-commit-action@v4
       #  with:
