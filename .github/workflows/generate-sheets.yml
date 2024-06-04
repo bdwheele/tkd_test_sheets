@@ -4,7 +4,8 @@ on:
   push:
     paths:
       - 'inventory.csv'
-      - 'template.html'
+      - 'techniques_template.html'
+      - 'text_template.html'
       - 'gen_testsheets.py'
 jobs:
   generate_sheets:
