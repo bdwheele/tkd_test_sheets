@@ -27,14 +27,12 @@ def main():
     parser.add_argument("--full", default=False, action="store_true", help="Don't collapse headers")
     args = parser.parse_args()
 
-
     outdir = sys.path[0] + "/test_sheets"
     # get our test sheet template
-    template = Template((Path(sys.path[0]) / "template.html").read_text())
+    template = Template((Path(sys.path[0]) / "test_template.html").read_text())
 
     # get the techniques sheet template
-    tech_template = Template((Path(sys.path[0]) / "techniques.html").read_text())
-
+    tech_template = Template((Path(sys.path[0]) / "techniques_template.html").read_text())
 
     # walk the ranks, generating each sheet as we go.
     for rank in ranks:
@@ -45,24 +43,27 @@ def main():
         html_tables = []
         tech_tables = []
         for tdata in data['tables']:
-            thtml = html = """<table class="ttable">\n"""
+            html = """<table class="ttable">\n"""
+            
             title = tdata['title']
             if tdata['subtitle']:
                 # append the subtitle
                 title += f"""</br><span class="subtitle">{tdata['subtitle']}</span>"""
             html += f"""  <caption>{title}</caption>\n"""
-            thtml += f"""  <caption>{title}</caption>\n"""
+            tech_html = f"""  <span class="title">{title}</span>\n"""
+            tech_html += """<ul>\n"""
             html += f"""  <colgroup><col class="narrow"/><col class="narrow"/><col/></colgroup>\n"""
-            thtml += f"""  <colgroup><col class="narrow"/><col/></colgroup>\n"""
+            #tech_html += f"""  <colgroup><col class="narrow"/><col/></colgroup>\n"""
             html += f"""  <tr><td>&nbsp;</td><th>Score</th><th>Comments</th></tr>\n"""
-            thtml += f"""  <tr><td>&nbsp;</td><th>Notes</th></tr>\n"""
+            #tech_html += f"""  <tr><td>&nbsp;</td><th>Notes</th></tr>\n"""
             for header in tdata['headers']:
                 if not header['techniques']:
                     # skip empty headers
                     continue
                 if header['label'] != '':
                     html += f"""  <tr><td class="theader">{nbsp(header['label'])}</td><td></td><td></td></tr>\n"""
-                    thtml += f"""  <tr><td class="theader">{nbsp(header['label'])}</td><td></td></tr>\n"""
+                    #tech_html += f"""  <tr><td class="theader">{nbsp(header['label'])}</td><td></td></tr>\n"""
+                    tech_html += f"""  <li class="section">{nbsp(header['label'])}</li>\n"""
                 header_rows = 0
                 for t in header['techniques']:
                     label = nbsp(t['label'])
@@ -78,17 +79,17 @@ def main():
                         html += f"  <tr><td>{label}</td><td></td><td></td></tr>\n"
                         header_rows += 1
                         
-                    thtml += f"  <tr><td>{label}</td><td></td></tr>\n"
+                    tech_html += f'  <li class="technique">{label}</li>\n'
                                         
                 if header['type'] == 'C' and header_rows == 0:
                     # add a blank row for comments.
                     html += "  <tr><td>&nbsp;</td><td></td><td></td></tr>\n"
-                    thtml += "  <tr><td>&nbsp;</td><td></td></tr>\n"
+                    #tech_html += "  <tr><td>&nbsp;</td><td></td></tr>\n"
 
             html += """</table>"""
-            thtml += """</table>"""
+            tech_html += """</ul>"""
             html_tables.append(html)
-            tech_tables.append(thtml)
+            tech_tables.append(tech_html)
 
 
 
@@ -116,10 +117,9 @@ def main():
         subprocess.run(['weasyprint', html_file, f"{outdir}/{ranks[rank][0]}-techniques.pdf"])
 
 
-
-
 def nbsp(text):
     return text.replace(' ', '&nbsp;')
+
 
 def read_inventory(invfile, rank):        
     # read the inventory and return the data for the given rank

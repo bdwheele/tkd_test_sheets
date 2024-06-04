@@ -14,7 +14,7 @@ body {
 }
 
 div.body {
-    column-count: 2
+    column-count: 3;
 }
 
 table {
@@ -52,6 +52,38 @@ caption span.subtitle {
     font-weight: normal;
 }
 
+span.title {
+    font-size: 12pt;
+    text-align: center;
+    padding-top: 10pt;
+    font-weight: bold;
+    padding-bottom: 0pt;
+}
+
+span.subtitle {
+    font-size: 8pt;
+    text-align: center;
+    font-weight: normal;
+}
+
+ul {
+    list-style-position: inside;
+    padding-left: 0;
+}
+
+li.section {
+    font-size: 9pt;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    word-wrap: break-word;
+    font-weight: bold;
+    list-style: none;
+}
+
+li.technique {
+    font-size: 9pt;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    word-wrap: break-word;
+}
 
 table.ttable {
     border: 1px solid black;
@@ -70,7 +102,7 @@ table .theader {
 
 .narrow {
     width: 1px;
-    white-space: nowrap;
+    white-space: nowrap; 
 }
 
 span.signature {
@@ -95,6 +127,7 @@ p.revision {
 
         <div class="body">
             ${tables}
+            <p class="revision">Revision: ${revision}</p>
         </div>
         <!--
         <table>
@@ -128,6 +161,6 @@ p.revision {
             </tr>
         </table>
     -->
-        <p class="revision">Revision: ${revision}</p>
+        
     </body>
 </html>
