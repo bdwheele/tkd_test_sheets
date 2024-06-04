@@ -69,6 +69,7 @@ span.subtitle {
 ul {
     list-style-position: inside;
     padding-left: 0;
+    break-inside: avoid-column;
 }
 
 li.section {
@@ -85,31 +86,12 @@ li.technique {
     word-wrap: break-word;
 }
 
-table.ttable {
-    border: 1px solid black;
-    border-collapse: collapse;
-    font-size: 9pt;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-}
-
-table.ttable tr, table.ttable td, table.ttable th {
-    border: 1px solid gray; 
-}
-
-table .theader {
-    font-weight: bold;
-}
 
 .narrow {
     width: 1px;
     white-space: nowrap; 
 }
 
-span.signature {
-    border-bottom: 1pt solid;
-    display: inline-block;
-    height: 13pt;
-}
 
 p.revision {
     font-size: 8pt;
@@ -119,48 +101,11 @@ p.revision {
     <body>
         <table class="title">
             <tr><th colspan="4">Taekwondo Club @ IU - ${title}</th></tr>
-           <!-- <tr><td class="narrow">Name</td><td>&nbsp;</td>
-                <td class="narrow">Belt Size</td><td style="width: 1in;">&nbsp;</td></tr>
-            <tr><td class="narrow">Email</td><td>&nbsp;</td>
-                <td class="narrow">Date</td><td>&nbsp;</td></tr> -->
         </table>
 
         <div class="body">
-            ${tables}
-            <p class="revision">Revision: ${revision}</p>
+            ${content}
+            <p class="revision">Revision Date: ${revision}</p>
         </div>
-        <!--
-        <table>
-            <caption>Authorization</caption>
-            <tr><td colspan="2">
-                I recognize that promotion standards are uniform and that 
-                each belt reflects a specific level of competence.  If I do 
-                not achieve the desired rank, I may take the test again 
-                after more practice at a time designated by the instructors.
-            </td></tr>
-            <tr>
-                <td class="narrow">Student Signature: 
-                    <span class="signature" style="width: 4in">&nbsp;</span>
-                </td>
-                <td class="narrow">Date: 
-                    <span class="signature" style="width: 1.25in">&nbsp;</span>
-                </td>
-            </tr>
-        </table>
-
-        <table>
-            <caption>Recommendation</caption>
-            <tr>
-                <td>I recommend the student:</td>
-                <td>[ ] be promoted to this rank</td>
-                <td>[ ] consider this a practice test</td>
-            </tr>
-            <tr>
-                <td colspan="3">Judge: 
-                    <span class="signature" style="width: 4in">&nbsp;</span></td>
-            </tr>
-        </table>
-    -->
-        
     </body>
 </html>
