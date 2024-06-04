@@ -29,13 +29,6 @@ def main():
 
     outdir = sys.path[0] + "/test_sheets"
 
-    # get our test sheet template
-    template = Template((Path(sys.path[0]) / "test_template.html").read_text())
-
-    # get the techniques sheet template
-    tech_template = Template((Path(sys.path[0]) / "techniques_template.html").read_text())
-
-
     # walk the ranks, generating each sheet as we go.    
     for rank in ranks:
         print(f"Generating {ranks[rank]}")
