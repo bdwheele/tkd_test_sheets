@@ -5,7 +5,7 @@ on:
     paths:
       - 'inventory.csv'
       - 'techniques_template.html'
-      - 'text_template.html'
+      - 'test_template.html'
       - 'gen_testsheets.py'
 jobs:
   generate_sheets:
