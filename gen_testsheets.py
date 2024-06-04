@@ -67,7 +67,7 @@ def gen_test_content(data, full=False):
         title = tdata['title']
         if tdata['subtitle']:
             # append the subtitle
-            title += f"""</br><span class="subtitle">{tdata['subtitle']}</span>"""
+            title += f"""<br/><span class="subtitle">{tdata['subtitle']}</span>"""
         html += f"""  <caption>{title}</caption>\n"""
         html += f"""  <colgroup><col class="narrow"/><col class="narrow"/><col/></colgroup>\n"""
         html += f"""  <tr><td>&nbsp;</td><th>Score</th><th>Comments</th></tr>\n"""
@@ -106,19 +106,20 @@ def gen_tech_content(data, full=False):
     tech_tables = []
     for tdata in data['tables']:        
         title = tdata['title']
+        tech_html = f"""  <span class="title">{title}</span>\n"""
         if tdata['subtitle']:
             # append the subtitle
-            title += f"""</br><span class="subtitle">{tdata['subtitle']}</span>"""        
-        tech_html = f"""  <span class="title">{title}</span>\n"""
+            tech_html += f"""<br/><span class="subtitle">{tdata['subtitle']}</span>"""        
+
         tech_html += """<ul>\n"""        
         for header in tdata['headers']:
             if not header['techniques']:
                 # skip empty headers
                 continue
             if header['label'] != '':
-                tech_html += f"""  <li class="section">{nbsp(header['label'])}</li>\n"""
+                tech_html += f"""  <li class="section">{header['label']}</li>\n"""
             for t in header['techniques']:
-                label = nbsp(t['label'])
+                label = t['label']
                 if t['type'] == 'N':
                     # new technique
                     label = f'<span class="new">{label}</span>'

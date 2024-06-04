@@ -9,7 +9,7 @@ Type,Label,Y,O,G,P,b,B,R,T,1,2,3
 #,"For techniques:  X=show, N=show as new technique, blank=don’t show, other=show value in parens",,,,,,,,,,,
 ,,,,,,,,,,,,
 #,Revision date for this sheet,,,,,,,,,,,
-R,05/01/24,,,,,,,,,,,
+R,06/04/24,,,,,,,,,,,
 ,,,,,,,,,,,,
 T,Forms,X,X,X,X,X,X,X,X,X,X,X
 ,Kicho IL Jang,N,X,X,X,X,X,X,X,X,X,X
@@ -241,7 +241,7 @@ T,Body Movement Drill with Blocks and Strikes,,,,,,X,,,,,
 T,Special,,X,X,X,X,X,X,X,X,X,X
 ,Limited Teaching Experience,,,,,,,X,,,,
 ,Demonstrated Teaching Experience,,,,,,,,X,X,,
-,Teaching Experience,,,,,,,,,,20 Sessions,30 Sessions
+,Teaching Experience,,,,,,,,,,20 Sessions,30
 ,Kunja Paper,,,,,,,,,X,X,X
 H,Breaking (Optional),,X,X,X,X,X,X,X,X,X,X
 ,Front Kick,,X,,,,,,,,,
