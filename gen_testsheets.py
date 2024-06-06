@@ -21,7 +21,6 @@ ranks = {
     '3': ('3rddan', '3rd Dan Black Belt')
 }
 
-
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--full", default=False, action="store_true", help="Don't collapse headers")    
@@ -137,6 +136,7 @@ def nbsp(text):
     "Force any spaces to non-breaking spaces"
     return text.replace(' ', '&nbsp;')
 
+
 def fix_text(text):
     "Fix any html-special codes and/or things excel put in"
     # special character table
@@ -150,7 +150,6 @@ def fix_text(text):
         text = text.replace(q, r)
 
     return text
-
 
 
 def read_inventory(invfile, rank):        
