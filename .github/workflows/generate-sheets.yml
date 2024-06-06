@@ -29,5 +29,5 @@ jobs:
           files: test_sheets/*
           make_latest: "true"
           generate_release_notes: true
-
+          tag_name:  "Build on ${{ github.even.repository.updated_at }}"
 
