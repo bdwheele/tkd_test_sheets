@@ -25,9 +25,9 @@ jobs:
           name: test_sheets
           path: test_sheets
       - uses: softprops/action-gh-release@v2
+        if: startsWith(github.ref 'refs/tags')
         with:
           files: test_sheets/*
           make_latest: "true"
-          generate_release_notes: true
-          #tag_name:  "Build on ${{ github.event.repository.updated_at }}"
+          generate_release_notes: true          
 
