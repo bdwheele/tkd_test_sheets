@@ -23,12 +23,10 @@ jobs:
         with:
           name: test_sheets
           path: test_sheets
-      - uses: marvinpinto/action-automatic-releases@latest
+      - uses: softprops/action-gh-release@v2
         with:
-          repo_token: "${{ secrets.GITHUB_TOKEN }}"
-          automatic_release_tag: "latest"
-          title: "Latest Build"
           files: test_sheets/*
-          
+          make_latest: "true"
+          generate_release_notes: true
 
 
