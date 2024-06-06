@@ -19,10 +19,16 @@ jobs:
           sudo apt-get update
           DEBIAN_FRONTEND=noninteractive sudo apt-get -qq install -y weasyprint pandoc poppler-utils
           ./gen_testsheets.py
-          ./join_sheets.sh
       - uses: actions/upload-artifact@v4
         with:
           name: test_sheets
           path: test_sheets
+      - uses: marvinpinto/action-automatic-releases@latest
+        with:
+          repo_token: "${{ secrets.GITHUB_TOKEN }}"
+          automatic_release_tag: "latest"
+          title: "Latest Build"
+          files: test_sheets/*
           
+
 

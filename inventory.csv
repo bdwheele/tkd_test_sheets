@@ -8,8 +8,8 @@ Type,Label,Y,O,G,P,b,B,R,T,1,2,3
 #,"For Headers:  X=show, C=collapse and only show new techniques, blank=don’t show",,,,,,,,,,,
 #,"For techniques:  X=show, N=show as new technique, blank=don’t show, other=show value in parens",,,,,,,,,,,
 ,,,,,,,,,,,,
-#,Revision date for this sheet,,,,,,,,,,,
-R,06/04/24,,,,,,,,,,,
+#,Revision date for this sheet (should be in the format:  YYYY-MM-DD),,,,,,,,,,,
+R,2024-06-06,,,,,,,,,,,
 ,,,,,,,,,,,,
 T,Forms,X,X,X,X,X,X,X,X,X,X,X
 ,Kicho IL Jang,N,X,X,X,X,X,X,X,X,X,X

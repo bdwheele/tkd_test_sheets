@@ -5,7 +5,7 @@ from pathlib import Path
 import csv
 import sys
 import subprocess
-
+from datetime import datetime
 
 ranks = {
     'Y': ('yellow', '8th Kup / Yellow Belt'),
@@ -30,25 +30,31 @@ def main():
     outdir = sys.path[0] + "/test_sheets"
 
     # walk the ranks, generating each sheet as we go.    
+    docs = []
     for rank in ranks:
         print(f"Generating {ranks[rank]}")
 
         # read the csv inventory
         data = read_inventory(Path(sys.path[0]) / "inventory.csv", rank)
 
-        for sheet in [('test_template.html', gen_test_content, '-test'),
-                      ('techniques_template.html', gen_tech_content, '-techniques')]:
+        for sheet in [('techniques_template.html', gen_tech_content, '-techniques'),
+                      ('test_template.html', gen_test_content, '-test')]:
+            revision = data.get('revision', datetime.strftime(datetime.now(), '%Y-%m-%d'))
             content = sheet[1](data, args.full)
-            filebase = ranks[rank][0] + sheet[2]
+            filebase = ranks[rank][0] + sheet[2] + "-" + revision
             template = Template((Path(sys.path[0], sheet[0]).read_text()))
             with open(f"{outdir}/{filebase}.html", "w") as f:
                 f.write(template.safe_substitute(title=ranks[rank][1],
                                                  content=content,
-                                                 revision=data['revision']))
+                                                 revision=revision))
             
             # generate the word doc & pdf
             subprocess.run(['pandoc', f'{outdir}/{filebase}.html', "-o", f"{outdir}/{filebase}.docx"])
             subprocess.run(['weasyprint', f'{outdir}/{filebase}.html', f"{outdir}/{filebase}.pdf"])
+            docs.append(f"{outdir}/{filebase}.pdf")
+
+    # Create the everything pdf
+    subprocess.run(['pdfunite', *docs, f"{outdir}/everything-{revision}.pdf"])
 
 
 def gen_test_content(data, full=False):
