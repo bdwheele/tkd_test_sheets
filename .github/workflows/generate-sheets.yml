@@ -7,6 +7,7 @@ on:
       - 'techniques_template.html'
       - 'test_template.html'
       - 'gen_testsheets.py'
+      - .github/workflows/generate-sheets.yml
 jobs:
   generate_sheets:
     runs-on: ubuntu-latest
