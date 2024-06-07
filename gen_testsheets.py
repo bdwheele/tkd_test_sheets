@@ -52,6 +52,27 @@ def main():
             subprocess.run(['weasyprint', f'{outdir}/{filebase}.html', f"{outdir}/{filebase}.pdf"])
             docs.append(f"{outdir}/{filebase}.pdf")
 
+    # Generate special sheets
+    for sheet in [('Supplemental Sheet', 'supplemental_template.html', 'supplemental', gen_supplemental, 'S'),
+                  ('Skills Matrix', 'matrix_template.html', 'matrix', gen_matrix, 'M')]:
+        name, template_file, basename, genfunc, tag = sheet
+
+        # create the supplemental sheet
+        print(f"Generating {name}")        
+        data = read_inventory(Path(sys.path[0]) / "inventory.csv", tag)
+        revision = data.get('revision', datetime.strftime(datetime.now(), '%Y-%m-%d'))
+        content = genfunc(data, args.full)
+        filebase = basename + "-" + revision
+        template = Template((Path(sys.path[0], template_file).read_text()))
+        with open(f"{outdir}/{filebase}.html", "w") as f:
+            f.write(template.safe_substitute(content=content,
+                                                revision=revision))
+        
+        # generate the word doc & pdf
+        subprocess.run(['pandoc', f'{outdir}/{filebase}.html', "-o", f"{outdir}/{filebase}.docx"])
+        subprocess.run(['weasyprint', f'{outdir}/{filebase}.html', f"{outdir}/{filebase}.pdf"])
+        docs.append(f"{outdir}/{filebase}.pdf")
+
     # Create the everything pdf
     subprocess.run(['pdfunite', *docs, f"{outdir}/everything-{revision}.pdf"])
 
@@ -132,6 +153,80 @@ def gen_tech_content(data, full=False):
     return "\n".join(tech_tables)
 
 
+def gen_supplemental(data, full=False):
+    style_map = {'Y': 'yellow', 'O': 'orange', 'G': 'green', 'P': 'purple',
+                 'b': 'blue', 'B': 'brown', 'R': 'red', 'T': 'temp',
+                 '1': 'black', '2': 'black', '3': 'black'}
+
+    def tempize_text(text):
+        return ''.join([f'<span class="temp">{x}</span>' for x in text])
+
+    tech_tables = []
+    for tdata in data['tables']:        
+        title = tdata['title']
+        tech_html = f"""  <span class="title">{title}</span>\n"""
+        if tdata['subtitle']:
+            # append the subtitle
+            tech_html += f"""<br/><span class="subtitle">{tdata['subtitle']}</span>"""        
+
+        tech_html += """<ul>\n"""        
+        for header in tdata['headers']:
+            if not header['techniques']:
+                # skip empty headers
+                continue
+            if header['label'] != '':
+                tech_html += f"""  <li class="section">{header['label']}</li>\n"""
+                        
+            for t in header['techniques']:
+                label = t['label']
+                if t['type'] == 'T':
+                    label = tempize_text(label)
+                if t['type'] == '2':
+                    label += " (2nd Dan)"
+                if t['type'] == '3':
+                    label += " (3rd Dan)"
+
+                tech_html += f'  <li class="{style_map[t["type"]]}">{label}</li>\n'
+                                    
+        tech_html += """</ul>"""
+        tech_tables.append(tech_html)
+
+    return "\n".join(tech_tables)
+
+
+def gen_matrix(data, full=True):
+
+    html_tables = []
+    for tdata in data['tables']:
+        html = """<table class="ttable">\n"""    
+        title = tdata['title']
+        html += f"""  <colgroup><col/>""" + ("""<col class="narrow"/>""" * 11) +   """</colgroup>\n"""
+        html += f"""  <thead><th>{title}</th><th>Y</th><th>O</th><th>G</th><th>P</th><th>b</th><th>B</th><th>R</th><th>T</th><th>1</th><th>2</th><th>3</th></thead>"""        
+        for header in tdata['headers']:
+            if not header['techniques']:
+                # skip empty headers
+                continue
+            if header['label'] != '':
+                html += f"""  <tr><td class="theader">{nbsp(header['label'])}</td>""" + "<td colspan='11'/>"  + "</tr>\n"
+            for t in header['techniques']:
+                label = nbsp(t['label'])
+                html += f"  <tr><td>{label}</td>" 
+                found = False
+                for rank in ranks.keys():
+                    if rank == t['type']:
+                        found = True
+                    attr = 'class="graybg"' if rank in ('b', '1') else ''
+
+                    html += f"<td {attr}>{'X' if found else '&nbsp;'}</td>"
+                
+                html += "</tr>\n"
+
+        html += """</table>"""    
+        html_tables.append(html)
+    
+    return "\n".join(html_tables)
+
+
 def nbsp(text):
     "Force any spaces to non-breaking spaces"
     return text.replace(' ', '&nbsp;')
@@ -145,7 +240,8 @@ def fix_text(text):
                '>': '&gt;',
                '’': "'",
                '"': '"',
-               '“': '"'}
+               '“': '"',
+               '–': '-'}
     for q, r in special.items():
         text = text.replace(q, r)
 

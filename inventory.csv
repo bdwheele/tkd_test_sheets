@@ -1,258 +1,319 @@
-Type,Label,Y,O,G,P,b,B,R,T,1,2,3
-#,The Type column indicates how the row will be used.,,,,,,,,,,,
-#,"#=comment, R=test revision, T=table, S=subtitle, H=header, and X=something on the test",,,,,,,,,,,
-#,"The Label column is the text for whatever the row is (Table title, header, technique, etc). Row is ignored if it’s blank",,,,,,,,,,,
-#,"The Y, O, G, P, b, B, R, T, 1, 2, 3 columns are the configuration for the ranks (Yellow, Orange, etc)",,,,,,,,,,,
-#,"For comments and the test revision, the ranks are ignored.",,,,,,,,,,,
-#,"For Tables and Subtitles, the valid values are:  X=show, blank=don’t show",,,,,,,,,,,
-#,"For Headers:  X=show, C=collapse and only show new techniques, blank=don’t show",,,,,,,,,,,
-#,"For techniques:  X=show, N=show as new technique, blank=don’t show, other=show value in parens",,,,,,,,,,,
-,,,,,,,,,,,,
-#,Revision date for this sheet (should be in the format:  YYYY-MM-DD),,,,,,,,,,,
-R,2024-06-06,,,,,,,,,,,
-,,,,,,,,,,,,
-T,Forms,X,X,X,X,X,X,X,X,X,X,X
-,Kicho IL Jang,N,X,X,X,X,X,X,X,X,X,X
-,Kicho I Jang,N,X,X,X,X,X,X,X,X,X,X
-,Kicho Sam Jang,,N,X,X,X,X,X,X,X,X,X
-,Palgue IL Jang,,N,X,X,X,X,X,X,X,X,X
-,Palgue I Jang,,,N,X,X,X,X,X,X,X,X
-,Palgue Sam Jang,,,N,X,X,X,X,X,X,X,X
-,Palgue Sa Jang,,,,N,X,X,X,X,X,X,X
-,Palgue O Jang,,,,,N,X,X,X,X,X,X
-,Palgue Yuk Jang,,,,,,N,X,X,X,X,X
-,Palgue Chil Jang,,,,,,,N,X,X,X,X
-,Palgue Pal Jang,,,,,,,,N,X,X,X
-,Koryo,,,,,,,,N,X,X,X
-,Keum Gong,,,,,,,, ,N,X,X
-,Nipponjin #1,,,,,,,,,N,X,X
-,Nipponjin #2,,,,,,,,,,N,X
-,Nipponjin #3,,,,,,,,,,N,X
-,Ro Pai,,,,,,,,,,N,X
-,Bul Pai So,,,,,,,,,,N,X
-,Taebaek,,,,,,,,,,N,X
-,Bul Pai De,,,,,,,,,,,N
-,Pyongwan,,,,,,,,,,,N
-,,,,,,,,,,,,
-T,Blocks & Strikes,X,X,X,X,X,X,X,X,X,X,X
-S,Side Stance and Reversed,,,,,X,,,,,,
-S,In Back Stance,,,,,,X,,,,,
-S,At Judge’s Discretion,,,,,,,X,X,X,X,X
-H,Formal Style Blocks,X,X,X,,C,C,C,C,C,C,C
-,Straddle Punch,N,X,X,,X,X,X,X,X,X,X
-,Four Corner Drill,,N,X,,X,X,X,X,X,X,X
-,Low Block,N,X,X,,X,X,X,X,X,X,X
-,Outside Middle Block,N,X,X,,X,X,X,X,X,X,X
-,Inside Middle Block,N,X,X,,X,X,X,X,X,X,X
-,High Block,N,X,X,,X,X,X,X,X,X,X
-,Double Knifehand Blocks,,N,X,,X,X,X,X,X,X,X
-H,Formal Style Strikes,X,X,X,,C,C,C,C,C,C,C
-,Middle Punch,N,X,X,,X,X,X,X,X,X,X
-,Vertical Punch,,,X,,X,X,X,X,X,X,X
-,Palm Heel Strike,,,X,,X,X,X,X,X,X,X
-,Tiger Claw Strike,,,X,,X,X,X,X,X,X,X
-,Tiger Mouth Strike,,,X,,X,X,X,X,X,X,X
-,Knifehand Strike,N,X,X,,X,X,X,X,X,X,X
-,Side Knifehand Strike,,,X,,X,X,X,X,X,X,X
-,Back Fist Strike,,,X,,X,X,X,X,X,X,X
-,Ridgehand Strike,,,X,,X,X,X,X,X,X,X
-,Hammer Fist Strike,,,X,,X,X,X,X,X,X,X
-,Upper Cut Strike,,,X,,X,X,X,X,X,X,X
-,Spear Hand Strike,,,X,,X,X,X,X,X,X,X
-H,Sparring Style Strikes,,,,X,C,C,C,C,C,C,C
-,Jab,,,,N,X,X,X,X,X,X,X
-,Reverse Punch,,,,N,X,X,X,X,X,X,X
-,Moving Punch,,,,N,X,X,X,X,X,X,X
-,Palm Heel Strike,,,,N,X,X,X,X,X,X,X
-,Knifehand Strike,,,,N,X,X,X,X,X,X,X
-,Ridgehand Strike,,,,N,X,X,X,X,X,X,X
-,Back Fist Strike,,,,N,X,X,X,X,X,X,X
-,Side Knifehand Strike,,,,N,X,X,X,X,X,X,X
-,Hammer Fist Strike,,,,N,X,X,X,X,X,X,X
-,Hook,,,,N,X,X,X,X,X,X,X
-,Upper Cut Strike,,,,N,X,X,X,X,X,X,X
-H,Sparring Style Blocks,,,,X,C,C,C,C,C,C,C
-,Outside Low Block,,,,N,X,X,X,X,X,X,X
-,Inside Low Block,,,,N,X,X,X,X,X,X,X
-,Outside Middle Block,,,,N,X,X,X,X,X,X,X
-,Inside Middle Block,,,,N,X,X,X,X,X,X,X
-,High Block,,,,N,X,X,X,X,X,X,X
-,45 Degree Block,,,,N,X,X,X,X,X,X,X
-,Block-Strike Combinations,,,,N,X,X,X,X,X,X,X
-H,Striking,,,, ,C,,,,,,
-H,Blocking,,,,,C,,,,,,
-H,Stances,,,,,C,C,C,C,C,C,C
-,,,,,,,,,,,,
-H,Turns, ,X,C,C,C,C,C,C,C,C,C
-,Low block in Front Stance,,N,X,X,X,X,X,X,X,X,X
-,Inside Middle Block in Front Stance,,,N,X,X,X,X,X,X,X,X
-,Block / Strike in Front Stance,,,,N,X,X,X,X,X,X,X
-,Block / Strike / Strike,,,,,N,X,X,X,X,X,X
-,,,,,,,,,,,,
-,,,,,,,,,,,,
-T,Kicks,X,X,X,X,X,X,X,X,X,X,X
-H,Stretch Kicks,N,X,C,C,C,C,C,C,C,C,C
-,Front Stretch Kick,N,X,X,X,X,X,X,X,X,X,X
-,Inside Crescent Kick,N,X,X,X,X,X,X,X,X,X,X
-,Outside Crescent Kick,N,X,X,X,X,X,X,X,X,X,X
-,,,,,,,,,,,,
-H,Basic Kicks,X,X,C,C,C,C,C,C,C,C,C
-,Front Kick,N,X,X,X,X,X,X,X,X,X,X
-,Half Moon Kick,N,X,X,X,X,X,X,X,X,X,X
-,Roundhouse Kick,N,X,X,X,X,X,X,X,X,X,X
-,Back Kick,N,X,X,X,X,X,X,X,X,X,X
-,Side Kick,N,X,X,X,X,X,X,X,X,X,X
-,,,,,,,,,,,,
-H,Advanced Kicks,,X,X,C,C,C,C,C,C,C,C
-,Back Side Kick,,N,X,X,X,X,X,X,X,X,X
-,Back Crescent Kick,,N,X,X,X,X,X,X,X,X,X
-,Back Spin Kick,,,N,X,X,X,X,X,X,X,X
-,,,,,,,,,,,,
-H,Sliding Kicks,,X,C,C,C,C,C,C,C,C,C
-,Sliding Front Kick,,N,X,X,X,X,X,X,X,X,X
-,Sliding Roundhouse,,N,X,X,X,X,X,X,X,X,X
-,Sliding Side Kick,,N,X,X,X,X,X,X,X,X,X
-,,,,,,,,,,,,
-H,Step Kicks,,,X,X,C,C,C,C,C,C,C
-,Front Kick,,,N,X,X,X,X,X,X,X,X
-,Roundhouse Kick,,,N,X,X,X,X,X,X,X,X
-,Side Kick,,,N,X,X,X,X,X,X,X,X
-,Advanced Kicks,,,,N,X,X,X,X,X,X,X
-,,,,,,,,,,,,
-H,Jump Kicks,,,,X,C,C,C,C,C,C,C
-,Jump Front Kick,,,,N,X,X,X,X,X,X,X
-,Jump Roundhouse,,,,N,X,X,X,X,X,X,X
-,Jump Side Kick,,,,,N,X,X,X,X,X,X
-,45 Degree Jump Front Kick,,,,,N,X,X,X,X,X,X
-,,,,,,,,,,,,
-H,45 Degree Jump Kicks,,,,,,X,C,C,C,C,C
-,45 Degree Jump Front Kick,,,,,,N,X,X,X,X,X
-,45 Degree Jump Roundhouse,,,,,,N,X,X,X,X,X
-,45 Degree Jump Side Kick,,,,,,N,X,X,X,X,X
-,,,,,,,,,,,,
-H,Advanced Jump Kicks,,,,,,X,X,X,C,C,C
-,Jump Back Side Kick,,,,,,,N,X,X,X,X
-,Jump Back Crescent Kick,,,,,,,N,X,X,X,X
-,Jump Back Spin,,,,,,,,N,X,X,X
-,Thunder Kick,,,,,,N,X,X,X,X,X
-,Flying Side Kick,,,,,,,,N,X,X,X
-,360 Back Side Kick,,,,,,,,,,N,N
-,,,,,,,,,,,,
-,,,,,,,,,,,,
-T,Kicking Combinations,,,X,X,X,X,X,X,X,X,X
-,Front Kick / Sliding Front Kick,,,N,X,X,X,X,X,X,X,X
-,Roundhouse / Sliding Roundhouse Kick,,,N,X,X,X,X,X,X,X,X
-,Side Kick / Sliding Side Kick,,,N,X,X,X,X,X,X,X,X
-,Inside Crescent / Sliding Outside Crescent Kick,,,N,X,X,X,X,X,X,X,X
-,Inside Crescent / Sliding Inside Twist Kick,,,,,N,X,X,X,X,X,X
-,Front Kick / Back Crescent Kick,,,N,X,X,X,X,X,X,X,X
-,Roundhouse / Back Spin Kick,,,,N,X,X,X,X,X,X,X
-,Side Kick / Back Side Kick,,,N,X,X,X,X,X,X,X,X
-,Front Kick / Jump Front Kick ,,,,,N,X,X,X,X,X,X
-,Roundhouse / Jump Roundhouse,,,,,,N,X,X,X,X,X
-,Side / Jump Side Kick,,,,,,,N,N,X,X,X
-,Inside Crescent / Thunder Kick,,,,,,,N,N,X,X,X
-,Own Combinations,,,,,,N,X,X,X,X,X
-,,,,,,,,,,,,
-,,,,,,,,,,,,
-T,One Step Sparring,X,X,X,X,X,X,,,,,
-T,Sparring,,,,,,,X,X,X,X,X
-S,"(Attacker: low block in front stance; Defender: Joon bee & nod, kick from back leg)",X,,,,,,,,,,
-S,"(Attacker: low block in front stance; Defender: Joon bee & nod, kick from front leg)",,X,,,,,,,,,
-S,"(Attacker: low block in front stance; Defender: Joon bee & nod, front/back leg kick, add a hand technique)",,,X,,,,,,,,
-S,"(Attacker: low block in front stance; Defender: Joon bee & nod, block,follow up with a strike and a kick)",,,,X,,,,,,,
-S,(Attacker: step back and ki-yap; Defender: step back & ki-kap; Attacker: Moving high punch),,,,,X,,,,,,
-S,(Attacker: step back and ki-yap; Defender: step back and ki-yap; Attacker: moving high punch),,,,,,X,,,,,
-,Yellow Belt One Steps,,X,,,,,,,,,
-,Yellow and Orange Belt One Steps,,,X,,,,,,,,
-,"Yellow, Orange, and Green Belt One Steps",,,,X,,,,,,,
-,Lower Belt One Steps,,,,,X,X,X,X,X,X,X
-,Front Kicks,X,X,,,,,,,,,
-,Roundhouse Kicks,X,X,,,,,,,,,
-,Side Kicks,X,X,,,,,,,,,
-,Front Kick (Front Leg),,,X,,,,,,,,
-,Front Kick (Back Leg),,,X,,,,,,,,
-,Roundhouse Kick (Front Leg),,,X,,,,,,,,
-,Roundhouse Kick (Back Leg),,,X,,,,,,,,
-,Side Kick (Front Leg),,,X,,,,,,,,
-,Side Kick (Back Leg),,,X,,,,,,,,
-,#1,,,,X,,,,,,,
-,#2,,,,X,,,,,,,
-,#3,,,,X,,,,,,,
-,#4,,,,X,,,,,,,
-,#5,,,,X,,,,,,,
-,Right Side,,,,,10,,,,,,
-,Left Side,,,,,10,,,,,,
-,One Steps,,,,,,10,,,,,
-H,Punch Defenses,,,,,,X,X,X,X,,
-H,Random Punch/Kick Defenses,,,,,,,,,,X,X
-,Jab,,,,,,N,X,X,X,X,X
-,Cross,,,,,,,N,X,X,X,X
-,Hook,,,,,,,,N,X,X,X
-,Upper Cut,,,,,,,,,N,X,X
-,,,,,,,,,,,,
-,,,,,,,,,,,,
-T,Self Defense,,,,X,X,X,X,X,X,X,X
-S,At Judge’s Discretion,,,,,,,,,X,X,X
-,MilGi,,,,5,X,,,,,,
-,Attacks from Rear,,,,,N,X,X,,,,
-,Attacks from Front,,,,,N,X,X,,,,
-,"Random Grabs, Attacks from Front & Rear",,,,,,,,X,X,X,X
-,Joint Locks,,,,,2,5,10,10,X,X,X
-,Straight Grab Joint Locks,,,,,,,,10,,,
-,Cross Grab Joint Locks,,,,,,,,5,,,
-,Throws,,,,,,,,3,,,
-,Ground Fighting,,,,,,N,X,X,X,X,X
-,Ground Defense,,,,,,,,,,N,X
-,Falling,,,,,,N,X,, ,,
-,Rolling,,,,,,,N,,,,
-,Falling & Rolling,,,,,,,,X,X,X,X
-,Body Movement Drill,,,,,,,X,X,X,X,X
-,,,,,,,,,,,,
-T,Body Movement Drill with Blocks,,,,X,,,,,,,
-,Front and Back / High Block,,,,X,,,,,,,
-,Side to Side / Outside Touch Block,,,,X,,,,,,,
-,Slide Back 45 / Outside Touch Block,,,,X,,,,,,,
-,"Inside Pivot / 45 Degree, Inside Touch Block",,,,X,,,,,,,
-,Back Pivot / Low Inside Touch Block,,,,X,,,,,,,
-,Cross-Step and Turn / Inside Touch Block,,,,X,,,,,,,
-,Back Spin / Outside Touch Block,,,,X,,,,,,,
-,Back Step / Low Outside Touch Block,,,,X,,,,,,,
-,,,,,,,,,,,,
-T,Body Movement Drill with Blocks and Strikes,,,, ,X,,,,,,
-,Front and Back / High Block / Reverse Palm Heel,,,, ,X,,,,,,
-,Side to Side / Outside Touch Block / Reverse Punch,,,, ,X,,,,,,
-,Slide Back 45 / Outside Touch Block / 4 Elbow Strikes,,,, ,X,,,,,,
-,"Inside Pivot / 45 Degree, Inside Touch Block /Knifehand Strike",,,, ,X,,,,,,
-,Back Pivot / Low Inside Touch Block / Reverse Ridge Hand,,,, ,X,,,,,,
-,Cross-Step and Turn / Inside Touch Block / Reverse Upper Cut,,,, ,X,,,,,,
-,Back Spin / Back Fist,,,, ,X,,,,,,
-,Back Step / Low Outside Touch Block / Reverse Hammer Fist,,,, ,X,,,,,,
-,,,,,,,,,,,,
-T,Body Movement Drill with Blocks and Strikes,,,,,,X,,,,,
-,Front and Back / Sliding Front Kick,,,,,,X,,,,,
-,Side to Side / Outside Touch Block / Lead Side Kick,,,,,,X,,,,,
-,Slide Back 45 / Outside Touch Block / Lead Half-Moon Kick,,,,,,X,,,,,
-,"Inside Pivot / 45 Degree, Inside Touch Block / Lead Half-Moon Kick",,,,,,X,,,,,
-,Back Pivot / Low Inside Touch Block / Roundhouse Kick,,,,,,X,,,,,
-,Cross-Step and Turn / Inside Touch Block / Back Side Kick,,,,,,X,,,,,
-,Back Spin / Outside Touch Block / Reverse Punch and Knee Kick,,,,,,X,,,,,
-,Back Step / Low Outside Touch Block / Back Spin Kick,,,,,,X,,,,,
-,,,,,,,,,,,,
-T,Special,,X,X,X,X,X,X,X,X,X,X
-,Limited Teaching Experience,,,,,,,X,,,,
-,Demonstrated Teaching Experience,,,,,,,,X,X,,
-,Teaching Experience,,,,,,,,,,20 Sessions,30
-,Kunja Paper,,,,,,,,,X,X,X
-H,Breaking (Optional),,X,X,X,X,X,X,X,X,X,X
-,Front Kick,,X,,,,,,,,,
-,Sliding Side Kick,,,X,,,,,,,,
-,Side Kick,,,,X,,,,,,,
-,Roundhouse Kick,,,,,X,,,,,,
-,Back Side Kick,,,,,,X,,,,,
-,One Hand Technique,,,,,,X,,,,,
-,Back Spin Kick,,,,,,,X,,,,
-,Two Hand Techniques,,,,,,,X,,,,
-,Back Spin Kick (Speed),,,,,,,,X,,,
-,Front-Back: 1 Hand/1 Foot Technique,,,,,,,,X,,,
-,5 Boards in Combination,,,,,,,,,X,X,X
+Type,Label,Y,O,G,P,b,B,R,T,1,2,3,S,M
+#,The Type column indicates how the row will be used.,,,,,,,,,,,,,
+#,"#=comment, R=test revision, T=table, S=subtitle, H=header, and X=something on the test",,,,,,,,,,,,,
+#,"The Label column is the text for whatever the row is (Table title, header, technique, etc). Row is ignored if it’s blank",,,,,,,,,,,,,
+#,"The Y, O, G, P, b, B, R, T, 1, 2, 3 columns are the configuration for the ranks (Yellow, Orange, etc)",,,,,,,,,,,,,
+#,"For comments and the test revision, the ranks are ignored.",,,,,,,,,,,,,
+#,"For Tables and Subtitles, the valid values are:  X=show, blank=don’t show",,,,,,,,,,,,,
+#,"For Headers:  X=show, C=collapse and only show new techniques, blank=don’t show",,,,,,,,,,,,,
+#,"For techniques:  X=show, N=show as new technique, blank=don’t show, other=show value in parens",,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+#,The S column is used to generate the supplemental techniques sheet.  These are techniques that are not on a test but the student is expected to know.,,,,,,,,,,,,,
+#,"Unlike the other columns, the value for the technique rows is the rank the student should know it:  Y, O, G, P, b, B, R, T, 1, 2,3",,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+#,Revision date for this sheet (should be in the format:  YYYY-MM-DD),,,,,,,,,,,,,
+R,2024-06-07,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+T,Forms,X,X,X,X,X,X,X,X,X,X,X,,X
+,Kicho IL Jang,N,X,X,X,X,X,X,X,X,X,X,,Y
+,Kicho I Jang,N,X,X,X,X,X,X,X,X,X,X,,Y
+,Kicho Sam Jang,,N,X,X,X,X,X,X,X,X,X,,O
+,Palgue IL Jang,,N,X,X,X,X,X,X,X,X,X,,O
+,Palgue I Jang,,,N,X,X,X,X,X,X,X,X,,G
+,Palgue Sam Jang,,,N,X,X,X,X,X,X,X,X,,G
+,Palgue Sa Jang,,,,N,X,X,X,X,X,X,X,,P
+,Palgue O Jang,,,,,N,X,X,X,X,X,X,,b
+,Palgue Yuk Jang,,,,,,N,X,X,X,X,X,,B
+,Palgue Chil Jang,,,,,,,N,X,X,X,X,,R
+,Palgue Pal Jang,,,,,,,,N,X,X,X,,T
+,Koryo,,,,,,,,N,X,X,X,,T
+,Keum Gong,,,,,,,, ,N,X,X,,1
+,Nipponjin #1,,,,,,,,,N,X,X,,1
+,Nipponjin #2,,,,,,,,,,N,X,,2
+,Nipponjin #3,,,,,,,,,,N,X,,2
+,Ro Pai,,,,,,,,,,N,X,,2
+,Bul Pai So,,,,,,,,,,N,X,,2
+,Taebaek,,,,,,,,,,N,X,,2
+,Bul Pai De,,,,,,,,,,,N,,3
+,Pyongwan,,,,,,,,,,,N,,3
+,,,,,,,,,,,,,,
+T,Blocks & Strikes,X,X,X,X,X,X,X,X,X,X,X,X,X
+S,Side Stance and Reversed,,,,,X,,,,,,,,
+S,In Back Stance,,,,,,X,,,,,,,
+S,At Judge’s Discretion,,,,,,,X,X,X,X,X,,
+H,Formal Style Blocks,X,X,X,,C,C,C,C,C,C,,X,X
+H,Formal Style Blocks & Strikes,,,,,,,,,,,C,,
+,Straddle Punch,N,X,X,,X,X,X,X,X,X,X,Y,Y
+,Four Corner Drill,,N,X,,X,X,X,X,X,X,X,O,O
+,Low Block,N,X,X,,X,X,X,X,X,X,X,Y,Y
+,Outside Middle Block,N,X,X,,X,X,X,X,X,X,X,Y,Y
+,Inside Middle Block,N,X,X,,X,X,X,X,X,X,X,Y,Y
+,High Block,N,X,X,,X,X,X,X,X,X,X,Y,Y
+,Double Knifehand Blocks,,N,X,,X,X,X,X,X,X,X,O,O
+,C Block,,,,,,,,,,,,P,P
+,Scissor Block,,,,,,,,,,,,b,b
+,Reinforced Outside Middle Block,,,,,,,,,,,,b,b
+,Reinforced Low Block,,,,,,,,,,,,b,b
+,Wedge Block – Palms Out,,,,,,,,,,,,B,B
+,High X Block,,,,,,,,,,,,R,R
+,Low X Block,,,,,,,,,,,,R,R
+,Double Low Block to Sides,,,,,,,,,,,,R,R
+,Wedge Block – Palms In,,,,,,,,,,,,R,R
+,Bo Block ,,,,,,,,,,,,R,R
+,Outside Touch Block,,,,,,,,,,,,T,T
+,Low Knifehand Block,,,,,,,,,,,,T,T
+,Diamond Block,,,,,,,,,,,,1,1
+,Mountain Block,,,,,,,,,,,,1,1
+,Diamond Block with Knifehands,,,,,,,,,,,,1,1
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+H,Formal Style Strikes,X,X,X,,C,C,C,C,C,C,,Y,Y
+,Middle Punch,N,X,X,,X,X,X,X,X,X,X,Y,Y
+,Vertical Punch,,,X,,X,X,X,X,X,X,X,G,G
+,Palm Heel Strike,,,X,,X,X,X,X,X,X,X,G,G
+,Tiger Claw Strike,,,X,,X,X,X,X,X,X,X,G,G
+,Tiger Mouth Strike,,,X,,X,X,X,X,X,X,X,G,G
+,Knifehand Strike,N,X,X,,X,X,X,X,X,X,X,Y,Y
+,Side Knifehand Strike,,,X,,X,X,X,X,X,X,X,G,G
+,Back Fist Strike,,,X,,X,X,X,X,X,X,X,G,G
+,Ridgehand Strike,,,X,,X,X,X,X,X,X,X,G,G
+,Hammer Fist Strike,,,X,,X,X,X,X,X,X,X,G,G
+,Upper Cut Strike,,,X,,X,X,X,X,X,X,X,G,G
+,Spear Hand Strike,,,X,,X,X,X,X,X,X,X,G,G
+,Forward Elbow Strike,,,,,,,,,,,,B,B
+,Double Uppercut Strike,,,,,,,,,,,,T,T
+,Side Punch,,,,,,,,,,,,T,T
+,Limb Destruction,,,,,,,,,,,,T,T
+,Inverted Ridgehand Strike,,,,,,,,,,,,1,1
+,Rear Elbow Strike – Waist,,,,,,,,,,,,T,T
+,Double Elbow Strike – Sides,,,,,,,,,,,,T,T
+,Double Side Punch,,,,,,,,,,,,1,1
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+H,Sparring Style Strikes,,,,X,C,C,C,C,C,C,,X,X
+H,Sparring Style Blocks & Strikes,,,,,,,,,,,C,,
+,Jab,,,,N,X,X,X,X,X,X,X,P,P
+,Reverse Punch,,,,N,X,X,X,X,X,X,X,P,P
+,Moving Punch,,,,N,X,X,X,X,X,X,X,P,P
+,Palm Heel Strike,,,,N,X,X,X,X,X,X,X,P,P
+,Knifehand Strike,,,,N,X,X,X,X,X,X,X,P,P
+,Ridgehand Strike,,,,N,X,X,X,X,X,X,X,P,P
+,Back Fist Strike,,,,N,X,X,X,X,X,X,X,P,P
+,Side Knifehand Strike,,,,N,X,X,X,X,X,X,X,P,P
+,Hammer Fist Strike,,,,N,X,X,X,X,X,X,X,P,P
+,Hook,,,,N,X,X,X,X,X,X,X,P,P
+,Upper Cut Strike,,,,N,X,X,X,X,X,X,X,P,P
+H,Sparring Style Blocks,,,,X,C,C,C,C,C,C,,X,X
+,Outside Low Block,,,,N,X,X,X,X,X,X,X,P,P
+,Inside Low Block,,,,N,X,X,X,X,X,X,X,P,P
+,Outside Middle Block,,,,N,X,X,X,X,X,X,X,P,P
+,Inside Middle Block,,,,N,X,X,X,X,X,X,X,P,P
+,High Block,,,,N,X,X,X,X,X,X,X,P,P
+,45 Degree Block,,,,N,X,X,X,X,X,X,X,P,P
+,Block-Strike Combinations,,,,N,X,X,X,X,X,X,X,P,P
+H,Striking,,,, ,C,,,,,,,,
+H,Blocking,,,,,C,,,,,,,,
+H,Stances,,,,,C,C,C,C,C,C,C,,
+,,,,,,,,,,,,,,
+H,Turns, ,X,C,C,C,C,C,C,C,C,C,,
+,Low block in Front Stance,,N,X,X,X,X,X,X,X,X,X,,
+,Inside Middle Block in Front Stance,,,N,X,X,X,X,X,X,X,X,,
+,Block / Strike in Front Stance,,,,N,X,X,X,X,X,X,X,,
+,Block / Strike / Strike,,,,,N,X,X,X,X,X,X,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+T,Kicks,X,X,X,X,X,X,X,X,X,X,X,X,X
+H,Stretch Kicks,N,X,C,C,C,C,C,C,C,C,C,Y,Y
+,Front Stretch Kick,N,X,X,X,X,X,X,X,X,X,X,Y,Y
+,Inside Crescent Kick,N,X,X,X,X,X,X,X,X,X,X,Y,Y
+,Outside Crescent Kick,N,X,X,X,X,X,X,X,X,X,X,Y,Y
+,,,,,,,,,,,,,,
+H,Basic Kicks,X,X,C,C,C,C,C,C,C,C,C,X,X
+,Front Kick,N,X,X,X,X,X,X,X,X,X,X,Y,Y
+,Half Moon Kick,N,X,X,X,X,X,X,X,X,X,X,Y,Y
+,Roundhouse Kick,N,X,X,X,X,X,X,X,X,X,X,Y,Y
+,Back Kick,N,X,X,X,X,X,X,X,X,X,X,Y,Y
+,Side Kick,N,X,X,X,X,X,X,X,X,X,X,Y,Y
+,Inside Twist Kick,,,,,,,,,,,,b,b
+,Axe Kick (Inside / Outside / Forward),,,,,,,,,,,,1,1
+,Hook Kick,,,,,,,,,,,,1,1
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+H,Advanced Kicks,,X,X,C,C,C,C,C,C,C,C,X,X
+,Back Side Kick,,N,X,X,X,X,X,X,X,X,X,O,O
+,Back Crescent Kick,,N,X,X,X,X,X,X,X,X,X,O,O
+,Back Spin Kick,,,N,X,X,X,X,X,X,X,X,G,G
+,Back Hook Kick,,,,,,,,,,,,1,1
+,,,,,,,,,,,,,,
+H,Sliding Kicks,,X,C,C,C,C,C,C,C,C,C,X,X
+,Sliding Front Kick,,N,X,X,X,X,X,X,X,X,X,O,O
+,Sliding Roundhouse,,N,X,X,X,X,X,X,X,X,X,O,O
+,Sliding Side Kick,,N,X,X,X,X,X,X,X,X,X,O,O
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+H,Step Kicks,,,X,X,C,C,C,C,C,C,C,X,X
+,Front Kick,,,N,X,X,X,X,X,X,X,X,P,P
+,Roundhouse Kick,,,N,X,X,X,X,X,X,X,X,P,P
+,Side Kick,,,N,X,X,X,X,X,X,X,X,P,P
+,Advanced Kicks,,,,N,X,X,X,X,X,X,X,b,b
+,,,,,,,,,,,,,,
+H,Jump Kicks,,,,X,C,C,C,C,C,C,C,X,X
+,Jump Front Kick,,,,N,X,X,X,X,X,X,X,P,P
+,Jump Roundhouse,,,,N,X,X,X,X,X,X,X,P,P
+,Jump Side Kick,,,,,N,X,X,X,X,X,X,b,b
+,45 Degree Jump Front Kick,,,,,N,X,X,X,X,X,X,b,b
+,,,,,,,,,,,,,,
+H,45 Degree Jump Kicks,,,,,,X,C,C,C,C,C,X,X
+,45 Degree Jump Front Kick,,,,,,N,X,X,X,X,X,B,B
+,45 Degree Jump Roundhouse,,,,,,N,X,X,X,X,X,B,B
+,45 Degree Jump Side Kick,,,,,,N,X,X,X,X,X,B,B
+,,,,,,,,,,,,,,
+H,Advanced Jump Kicks,,,,,,X,X,X,C,C,C,X,X
+,Jump Back Side Kick,,,,,,,N,X,X,X,X,R,R
+,Jump Back Crescent Kick,,,,,,,N,X,X,X,X,R,R
+,Jump Back Spin,,,,,,,,N,X,X,X,T,T
+,Thunder Kick,,,,,,N,X,X,X,X,X,B,B
+,Flying Side Kick,,,,,,,,N,X,X,X,T,T
+,360 Back Side Kick,,,,,,,,,,N,N,2,2
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+T,Kicking Combinations,,,X,X,X,X,X,X,X,X,X,X,X
+,Front Kick / Sliding Front Kick,,,N,X,X,X,X,X,X,X,X,G,G
+,Roundhouse / Sliding Roundhouse Kick,,,N,X,X,X,X,X,X,X,X,G,G
+,Side Kick / Sliding Side Kick,,,N,X,X,X,X,X,X,X,X,G,G
+,Inside Crescent / Sliding Outside Crescent Kick,,,N,X,X,X,X,X,X,X,X,G,G
+,Inside Crescent / Sliding Inside Twist Kick,,,,,N,X,X,X,X,X,X,b,b
+,Front Kick / Back Crescent Kick,,,N,X,X,X,X,X,X,X,X,G,G
+,Roundhouse / Back Spin Kick,,,,N,X,X,X,X,X,X,X,P,P
+,Side Kick / Back Side Kick,,,N,X,X,X,X,X,X,X,X,G,G
+,Front Kick / Jump Front Kick ,,,,,N,X,X,X,X,X,X,b,b
+,Roundhouse / Jump Roundhouse,,,,,,N,X,X,X,X,X,B,B
+,Side / Jump Side Kick,,,,,,,N,N,X,X,X,R,R
+,Inside Crescent / Thunder Kick,,,,,,,N,N,X,X,X,R,R
+,Own Combinations,,,,,,N,X,X,X,X,X,B,B
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+T,One Step Sparring,X,X,X,X,X,X,,,,,,,
+T,Sparring,,,,,,,X,X,X,X,X,X,X
+S,"(Attacker: low block in front stance; Defender: Joon bee & nod, kick from back leg)",X,,,,,,,,,,,,
+S,"(Attacker: low block in front stance; Defender: Joon bee & nod, kick from front leg)",,X,,,,,,,,,,,
+S,"(Attacker: low block in front stance; Defender: Joon bee & nod, front/back leg kick, add a hand technique)",,,X,,,,,,,,,,
+S,"(Attacker: low block in front stance; Defender: Joon bee & nod, block,follow up with a strike and a kick)",,,,X,,,,,,,,,
+S,(Attacker: step back and ki-yap; Defender: step back & ki-kap; Attacker: Moving high punch),,,,,X,,,,,,,,
+S,(Attacker: step back and ki-yap; Defender: step back and ki-yap; Attacker: moving high punch),,,,,,X,,,,,,,
+,Yellow Belt One Steps,,X,,,,,,,,,,,
+,Yellow and Orange Belt One Steps,,,X,,,,,,,,,,
+,"Yellow, Orange, and Green Belt One Steps",,,,X,,,,,,,,,
+,Lower Belt One Steps,,,,,X,X,X,X,X,X,X,,
+,Front Kicks,X,X,,,,,,,,,,,
+,Roundhouse Kicks,X,X,,,,,,,,,,,
+,Side Kicks,X,X,,,,,,,,,,,
+,Front Kick (Front Leg),,,X,,,,,,,,,,
+,Front Kick (Back Leg),,,X,,,,,,,,,,
+,Roundhouse Kick (Front Leg),,,X,,,,,,,,,,
+,Roundhouse Kick (Back Leg),,,X,,,,,,,,,,
+,Side Kick (Front Leg),,,X,,,,,,,,,,
+,Side Kick (Back Leg),,,X,,,,,,,,,,
+,#1,,,,X,,,,,,,,,
+,#2,,,,X,,,,,,,,,
+,#3,,,,X,,,,,,,,,
+,#4,,,,X,,,,,,,,,
+,#5,,,,X,,,,,,,,,
+,Right Side,,,,,10,,,,,,,,
+,Left Side,,,,,10,,,,,,,,
+,One Steps,,,,,,10,,,,,,,
+H,Punch Defenses,,,,,,X,X,X,X,,,X,X
+H,Random Punch/Kick Defenses,,,,,,,,,,X,X,,
+,Jab,,,,,,N,X,X,X,X,X,B,B
+,Cross,,,,,,,N,X,X,X,X,R,R
+,Hook,,,,,,,,N,X,X,X,T,T
+,Upper Cut,,,,,,,,,N,X,X,1,1
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+T,Self Defense,,,,X,X,X,X,X,X,X,X,X,X
+S,At Judge’s Discretion,,,,,,,,,X,X,X,,
+,MilGi,,,,5,X,,,,,,,P,P
+,Attacks from Rear,,,,,N,X,X,,,,,,
+,Attacks from Front,,,,,N,X,X,,,,,,
+,"Random Grabs, Attacks from Front & Rear",,,,,,,,X,X,X,X,,
+,Arms Pinned (Front / Rear),,,,,,,,,,,,b,b
+,Arms Free (Front / Rear),,,,,,,,,,,,b,b
+,Choke (Blood from Rear / Hand from Front),,,,,,,,,,,,b,b
+,One Arm Pinned (Front / Rear),,,,,,,,,,,,B,B
+,Arms Locked,,,,,,,,,,,,B,B
+,Hair Pull,,,,,,,,,,,,B,B
+,Ear Pull,,,,,,,,,,,,B,B
+,Shoulder Grab,,,,,,,,,,,,B,B
+,Lapel Grab,,,,,,,,,,,,R,R
+,Grab and Punch,,,,,,,,,,,,R,R
+,Double Lapel Grab,,,,,,,,,,,,R,R
+,Double Wrist Grab,,,,,,,,,,,,R,R
+,Full Nelson,,,,,,,,,,,,R,R
+,Head Lock (Front / Rear),,,,,,,,,,,,R,R
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,Straight Grab Joint Locks,,,,,2,5,10,10,X,X,X,P,P
+,Cross Grab Joint Locks,,,,,,,,5,X,X,X,T,T
+,Throws,,,,,,,,3,X,X,X,T,T
+,Ground Fighting,,,,,,N,X,X,X,X,X,B,B
+,Ground Defense,,,,,,,,,,N,X,2,2
+,Falling,,,,,,N,X,, ,,,b,b
+,Rolling,,,,,,,N,,,,,B,B
+,Falling & Rolling,,,,,,,,X,X,X,X,,
+,Body Movement Drill,,,,,,,X,X,X,X,X, , 
+,Body Movement Drill with Blocks,,,,,,,,,,,,P,P
+,Body Movement Drill with Blocks and Strikes,,,,,,,,,,,,b,b
+,Body Movement Drill with Kicks,,,,,,,,,,,,B,B
+,Body Movement Drill with Judge’s choice,,,,,,,,,,,,R,R
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+T,Body Movement Drill with Blocks,,,,X,,,,,,,,,
+,Front and Back / High Block,,,,X,,,,,,,,,
+,Side to Side / Outside Touch Block,,,,X,,,,,,,,,
+,Slide Back 45 / Outside Touch Block,,,,X,,,,,,,,,
+,"Inside Pivot / 45 Degree, Inside Touch Block",,,,X,,,,,,,,,
+,Back Pivot / Low Inside Touch Block,,,,X,,,,,,,,,
+,Cross-Step and Turn / Inside Touch Block,,,,X,,,,,,,,,
+,Back Spin / Outside Touch Block,,,,X,,,,,,,,,
+,Back Step / Low Outside Touch Block,,,,X,,,,,,,,,
+,,,,,,,,,,,,,,
+T,Body Movement Drill with Blocks and Strikes,,,, ,X,,,,,,,,
+,Front and Back / High Block / Reverse Palm Heel,,,, ,X,,,,,,,,
+,Side to Side / Outside Touch Block / Reverse Punch,,,, ,X,,,,,,,,
+,Slide Back 45 / Outside Touch Block / 4 Elbow Strikes,,,, ,X,,,,,,,,
+,"Inside Pivot / 45 Degree, Inside Touch Block /Knifehand Strike",,,, ,X,,,,,,,,
+,Back Pivot / Low Inside Touch Block / Reverse Ridge Hand,,,, ,X,,,,,,,,
+,Cross-Step and Turn / Inside Touch Block / Reverse Upper Cut,,,, ,X,,,,,,,,
+,Back Spin / Back Fist,,,, ,X,,,,,,,,
+,Back Step / Low Outside Touch Block / Reverse Hammer Fist,,,, ,X,,,,,,,,
+,,,,,,,,,,,,,,
+T,Body Movement Drill with Blocks and Strikes,,,,,,X,,,,,,,
+,Front and Back / Sliding Front Kick,,,,,,X,,,,,,,
+,Side to Side / Outside Touch Block / Lead Side Kick,,,,,,X,,,,,,,
+,Slide Back 45 / Outside Touch Block / Lead Half-Moon Kick,,,,,,X,,,,,,,
+,"Inside Pivot / 45 Degree, Inside Touch Block / Lead Half-Moon Kick",,,,,,X,,,,,,,
+,Back Pivot / Low Inside Touch Block / Roundhouse Kick,,,,,,X,,,,,,,
+,Cross-Step and Turn / Inside Touch Block / Back Side Kick,,,,,,X,,,,,,,
+,Back Spin / Outside Touch Block / Reverse Punch and Knee Kick,,,,,,X,,,,,,,
+,Back Step / Low Outside Touch Block / Back Spin Kick,,,,,,X,,,,,,,
+,,,,,,,,,,,,,,
+T,Special,,X,X,X,X,X,X,X,X,X,X,,
+,Limited Teaching Experience,,,,,,,X,,,,,,
+,Demonstrated Teaching Experience,,,,,,,,X,X,,,,
+,Teaching Experience,,,,,,,,,,20 Sessions,30,,
+,Kunja Paper,,,,,,,,,X,X,X,,
+H,Breaking (Optional),,X,X,X,X,X,X,X,X,X,X,,
+,Front Kick,,X,,,,,,,,,,,
+,Sliding Side Kick,,,X,,,,,,,,,,
+,Side Kick,,,,X,,,,,,,,,
+,Roundhouse Kick,,,,,X,,,,,,,,
+,Back Side Kick,,,,,,X,,,,,,,
+,One Hand Technique,,,,,,X,,,,,,,
+,Back Spin Kick,,,,,,,X,,,,,,
+,Two Hand Techniques,,,,,,,X,,,,,,
+,Back Spin Kick (Speed),,,,,,,,X,,,,,
+,Front-Back: 1 Hand/1 Foot Technique,,,,,,,,X,,,,,
+,5 Boards in Combination,,,,,,,,,X,X,X,,
