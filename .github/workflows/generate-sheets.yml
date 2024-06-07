@@ -8,6 +8,8 @@ on:
       - 'test_template.html'
       - 'gen_testsheets.py'
       - .github/workflows/generate-sheets.yml
+      - 'supplemental_template.html'
+      - 'matrix_template.html'
 jobs:
   generate_sheets:
     runs-on: ubuntu-latest
