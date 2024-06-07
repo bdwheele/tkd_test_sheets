@@ -31,7 +31,8 @@ T,Forms,X,X,X,X,X,X,X,X,X,X,X
 ,Ro Pai,,,,,,,,,,N,X
 ,Bul Pai So,,,,,,,,,,N,X
 ,Taebaek,,,,,,,,,,N,X
-,,,,,,,,,,,,
+,Bul Pai De,,,,,,,,,,,N
+,Pyongwan,,,,,,,,,,,N
 ,,,,,,,,,,,,
 T,Blocks & Strikes,X,X,X,X,X,X,X,X,X,X,X
 S,Side Stance and Reversed,,,,,X,,,,,,
@@ -202,7 +203,7 @@ S,At Judge’s Discretion,,,,,,,,,X,X,X
 ,Cross Grab Joint Locks,,,,,,,,5,,,
 ,Throws,,,,,,,,3,,,
 ,Ground Fighting,,,,,,N,X,X,X,X,X
-,Ground Defense,,,,,,,,,,N,N
+,Ground Defense,,,,,,,,,,N,X
 ,Falling,,,,,,N,X,, ,,
 ,Rolling,,,,,,,N,,,,
 ,Falling & Rolling,,,,,,,,X,X,X,X
