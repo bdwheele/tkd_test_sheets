@@ -89,13 +89,16 @@ def gen_test_content(data, full=False):
             title += f"""<br/><span class="subtitle">{tdata['subtitle']}</span>"""
         html += f"""  <caption>{title}</caption>\n"""
         html += f"""  <colgroup><col class="narrow"/><col class="narrow"/><col/></colgroup>\n"""
-        html += f"""  <tr><td>&nbsp;</td><th>Score</th><th>Comments</th></tr>\n"""
+        html += f"""  <thead>\n"""
+        html += f"""    <tr><td>&nbsp;</td><th>Score</th><th>Comments</th></tr>\n"""
+        html += f"""  </thead>\n"""
+        html += f"""  <tbody>\n"""
         for header in tdata['headers']:
             if not header['techniques']:
                 # skip empty headers
                 continue
             if header['label'] != '':
-                html += f"""  <tr><td class="theader">{nbsp(header['label'])}</td><td></td><td></td></tr>\n"""
+                html += f"""    <tr><td class="theader">{nbsp(header['label'])}</td><td></td><td></td></tr>\n"""
             header_rows = 0
             for t in header['techniques']:
                 label = nbsp(t['label'])
@@ -108,12 +111,13 @@ def gen_test_content(data, full=False):
                 if full or header['type'] == 'X' or (header['type'] == 'C' and t['type'] != 'X'):
                     # either show all techniques or only show those that 
                     # are new or have a count
-                    html += f"  <tr><td>{label}</td><td></td><td></td></tr>\n"
+                    html += f"    <tr><td>{label}</td><td></td><td></td></tr>\n"
                     header_rows += 1
             if header['type'] == 'C' and header_rows == 0:
                 # add a blank row for comments.
-                html += "  <tr><td>&nbsp;</td><td></td><td></td></tr>\n"
+                html += "    <tr><td>&nbsp;</td><td></td><td></td></tr>\n"
 
+        html += f"""  </tbody>\n"""
         html += """</table>"""
         html_tables.append(html)
     
