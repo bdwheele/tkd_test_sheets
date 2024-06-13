@@ -88,7 +88,7 @@ def gen_test_content(data, full=False):
             # append the subtitle
             title += f"""<br/><span class="subtitle">{tdata['subtitle']}</span>"""
         html += f"""  <caption>{title}</caption>\n"""
-        html += f"""  <colgroup><col class="narrow"/><col class="narrow"/><col/></colgroup>\n"""
+        html += f"""  <colgroup><col class="narrow"/><col class="score"/><col/></colgroup>\n"""
         html += f"""  <thead>\n"""
         html += f"""    <tr><td>&nbsp;</td><th>Score</th><th>Comments</th></tr>\n"""
         html += f"""  </thead>\n"""
