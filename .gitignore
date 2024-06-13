@@ -2,6 +2,7 @@
 test_sheets/*.pdf
 test_sheets/*.html
 test_sheets/*.docx
+all_sheets.zip
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
