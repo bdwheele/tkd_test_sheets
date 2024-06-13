@@ -15,7 +15,7 @@ body {
 
 
 table {
-    page-break-inside: avoid;   
+    /*page-break-inside: avoid; */  
     width: 100%; 
 }
 
@@ -31,7 +31,7 @@ table.title th {
 }
 
 table.title tr, table.title td {
-    border: 1px solid black;
+    border: 1pt solid black;
     font-size: 14pt;
 }
 
@@ -41,6 +41,7 @@ caption {
     text-align: center;
     padding-top: 10pt;
     font-weight: bold;
+    break-after: avoid;
 }
 
 caption span.subtitle {
@@ -51,15 +52,20 @@ caption span.subtitle {
 
 
 table.ttable {
-    border: 1px solid black;
+    border: 1pt solid black;
     border-collapse: collapse;
-    font-size: 9pt;
+    font-size: 9.5pt;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 table.ttable tr, table.ttable td, table.ttable th {
-    border: 1px solid gray; 
+    border: 1px solid black; 
 }
+
+table.ttable thead {
+    background-color: #a0a0a0;
+}
+
 
 table .theader {
     font-weight: bold;
@@ -67,6 +73,11 @@ table .theader {
 
 .narrow {
     width: 1px;
+    white-space: nowrap;
+}
+
+.score {
+    width: 4em;
     white-space: nowrap;
 }
 
