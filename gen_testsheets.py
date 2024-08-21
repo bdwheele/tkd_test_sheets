@@ -49,7 +49,8 @@ def main():
             
             # generate the word doc & pdf
             subprocess.run(['pandoc', f'{outdir}/{filebase}.html', "-o", f"{outdir}/{filebase}.docx"])
-            subprocess.run(['weasyprint', f'{outdir}/{filebase}.html', f"{outdir}/{filebase}.pdf"])
+            subprocess.run(['weasyprint', '--pdf-variant', 'pdf/ua-1',
+                            f'{outdir}/{filebase}.html', f"{outdir}/{filebase}.pdf"])
             docs.append(f"{outdir}/{filebase}.pdf")
 
     # Generate special sheets
@@ -70,7 +71,8 @@ def main():
         
         # generate the word doc & pdf
         subprocess.run(['pandoc', f'{outdir}/{filebase}.html', "-o", f"{outdir}/{filebase}.docx"])
-        subprocess.run(['weasyprint', f'{outdir}/{filebase}.html', f"{outdir}/{filebase}.pdf"])
+        subprocess.run(['weasyprint', '--pdf-variant', 'pdf/ua-1',
+                        f'{outdir}/{filebase}.html', f"{outdir}/{filebase}.pdf"])
         docs.append(f"{outdir}/{filebase}.pdf")
 
     # Create the everything pdf
