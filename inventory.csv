@@ -12,7 +12,7 @@
 "#","Unlike the other columns, the value for the technique rows is the rank the student should know it:  Y, O, G, P, b, B, R, T, 1, 2,3",,,,,,,,,,,,,
 ,,,,,,,,,,,,,,
 "#","Revision date for this sheet (should be in the format:  YYYY-MM-DD)",,,,,,,,,,,,,
-"R",2024-06-12,,,,,,,,,,,,,
+"R",2024-08-24,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,
 "T","Forms","X","X","X","X","X","X","X","X","X","X","X",,"X"
 ,"Kicho IL Jang","N","X","X","X","X","X","X","X","X","X","X",,"Y"
@@ -126,7 +126,7 @@
 ,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,
 "T","Kicks","X","X","X","X","X","X","X","X","X","X","X","X","X"
-"H","Stretch Kicks","N","X","C","C","C","C","C","C","C","C","C","Y","Y"
+"H","Stretch Kicks","X","X","C","C","C","C","C","C","C","C","C","Y","Y"
 ,"Front Stretch Kick","N","X","X","X","X","X","X","X","X","X","X","Y","Y"
 ,"Inside Crescent Kick","N","X","X","X","X","X","X","X","X","X","X","Y","Y"
 ,"Outside Crescent Kick","N","X","X","X","X","X","X","X","X","X","X","Y","Y"
