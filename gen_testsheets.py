@@ -25,6 +25,7 @@ ranks = {
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--full", default=False, action="store_true", help="Don't collapse headers")    
+    parser.add_argument("--writerbin", type=str, default="oowriter", help="binary for libreoffice writer")
     args = parser.parse_args()
 
     outdir = sys.path[0] + "/test_sheets"
@@ -50,7 +51,7 @@ def main():
             
             # generate the word doc & pdf
             #subprocess.run(['pandoc', f'{outdir}/{filebase}.html', "-o", f"{outdir}/{filebase}.docx"])
-            subprocess.run(['oowriter', '--convert-to', 'docx', f'{outdir}/{filebase}.html', '--outdir', f'{outdir}'])  
+            subprocess.run([args.writerbin, '--convert-to', 'docx', f'{outdir}/{filebase}.html', '--outdir', f'{outdir}'])  
             subprocess.run(['weasyprint', '--pdf-variant', 'pdf/ua-1',
                             f'{outdir}/{filebase}.html', f"{outdir}/{filebase}.pdf"])
             docs.append(f"{outdir}/{filebase}.pdf")
@@ -73,7 +74,7 @@ def main():
         
         # generate the word doc & pdf
         #subprocess.run(['pandoc', f'{outdir}/{filebase}.html', "-o", f"{outdir}/{filebase}.docx"])        
-        subprocess.run(['oowriter', '--convert-to', 'docx', f'{outdir}/{filebase}.html', '--outdir', f'{outdir}'])            
+        subprocess.run([args.writerbin, '--convert-to', 'docx', f'{outdir}/{filebase}.html', '--outdir', f'{outdir}'])            
         subprocess.run(['weasyprint', '--pdf-variant', 'pdf/ua-1',
                         f'{outdir}/{filebase}.html', f"{outdir}/{filebase}.pdf"])
         docs.append(f"{outdir}/{filebase}.pdf")
