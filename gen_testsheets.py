@@ -3,6 +3,7 @@ import argparse
 from string import Template
 from pathlib import Path
 import csv
+import os
 import sys
 import subprocess
 from datetime import datetime
@@ -48,7 +49,8 @@ def main():
                                                  revision=revision))
             
             # generate the word doc & pdf
-            subprocess.run(['pandoc', f'{outdir}/{filebase}.html', "-o", f"{outdir}/{filebase}.docx"])
+            #subprocess.run(['pandoc', f'{outdir}/{filebase}.html', "-o", f"{outdir}/{filebase}.docx"])
+            subprocess.run(['oowriter', '--convert-to', 'docx', f'{outdir}/{filebase}.html', '--outdir', f'{outdir}'])  
             subprocess.run(['weasyprint', '--pdf-variant', 'pdf/ua-1',
                             f'{outdir}/{filebase}.html', f"{outdir}/{filebase}.pdf"])
             docs.append(f"{outdir}/{filebase}.pdf")
@@ -70,20 +72,59 @@ def main():
                                                 revision=revision))
         
         # generate the word doc & pdf
-        subprocess.run(['pandoc', f'{outdir}/{filebase}.html', "-o", f"{outdir}/{filebase}.docx"])
+        #subprocess.run(['pandoc', f'{outdir}/{filebase}.html', "-o", f"{outdir}/{filebase}.docx"])        
+        subprocess.run(['oowriter', '--convert-to', 'docx', f'{outdir}/{filebase}.html', '--outdir', f'{outdir}'])            
         subprocess.run(['weasyprint', '--pdf-variant', 'pdf/ua-1',
                         f'{outdir}/{filebase}.html', f"{outdir}/{filebase}.pdf"])
         docs.append(f"{outdir}/{filebase}.pdf")
 
     # Create the everything pdf
     subprocess.run(['pdfunite', *docs, f"{outdir}/everything-{revision}.pdf"])
+    
+    # create everything_doublesided pdf
+    # the difference between this and the everything version is that each document will
+    # start on on even pages -- so when printing it comes out right
+    
+    # create a blank page that we can insert as necessary
+    blank = f"{outdir}/blank.pdf"
+    with open(f"{outdir}/blank.html", "w") as f:
+        f.write("""<html><head><style>
+@page {
+    size: letter portrait;
+    margin: 0.25in;
+}
+                </style></head></html>""")
+    subprocess.run(['weasyprint', f"{outdir}/blank.html", blank])
+    os.unlink(f"{outdir}/blank.html")
+
+    new_docs = []
+    for pdf in docs:
+        p = subprocess.run(['pdfinfo', pdf],
+                           stdout=subprocess.PIPE, encoding='utf-8')
+        pages = 1
+        for l in p.stdout.splitlines():
+            if l.startswith("Pages:"):
+                _, pages = l.split(":")
+                pages = int(pages)
+                break
+        else:
+            print(f"WARNING:  cannot determine number of pages for {pdf}, assuming odd number")
+            
+        new_docs.append(pdf)
+        if pages % 2 == 1:
+            new_docs.append(blank)
+
+    subprocess.run(['pdfunite', *new_docs, f"{outdir}/everything_doublesided-{revision}.pdf"])
+
+    os.unlink(blank)
+
 
 
 def gen_test_content(data, full=False):
     """Generate the content for a test sheet"""
     html_tables = []
     for tdata in data['tables']:
-        html = """<table class="ttable">\n"""
+        html = """<table width="100%" border="1" class="ttable">\n"""
         
         title = tdata['title']
         if tdata['subtitle']:

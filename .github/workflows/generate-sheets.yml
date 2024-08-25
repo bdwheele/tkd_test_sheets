@@ -20,7 +20,7 @@ jobs:
           python-version: '3.x'
       - run: |
           sudo apt-get update
-          DEBIAN_FRONTEND=noninteractive sudo apt-get -qq install -y pandoc poppler-utils
+          DEBIAN_FRONTEND=noninteractive sudo apt-get -qq install -y poppler-utils libreoffice-writer
           python -m venv .venv
           . .venv/bin/activate
           pip install -r requirements.txt
