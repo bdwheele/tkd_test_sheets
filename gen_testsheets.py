@@ -142,7 +142,10 @@ def gen_test_content(data, full=False):
                 # skip empty headers
                 continue
             if header['label'] != '':
-                html += f"""    <tr><td class="theader">{nbsp(header['label'])}</td><td></td><td></td></tr>\n"""
+                hlabel = header['label']
+                if header['type'] == 'O':
+                    hlabel += " (optional)"
+                html += f"""    <tr><td class="theader">{nbsp(hlabel)}</td><td></td><td></td></tr>\n"""
             header_rows = 0
             for t in header['techniques']:
                 label = nbsp(t['label'])
@@ -157,7 +160,7 @@ def gen_test_content(data, full=False):
                     # are new or have a count
                     html += f"    <tr><td>{label}</td><td></td><td></td></tr>\n"
                     header_rows += 1
-            if header['type'] == 'C' and header_rows == 0:
+            if header['type'] in ('C', 'O') and header_rows == 0:
                 # add a blank row for comments.
                 html += "    <tr><td>&nbsp;</td><td></td><td></td></tr>\n"
 
