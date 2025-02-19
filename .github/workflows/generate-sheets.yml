@@ -25,7 +25,9 @@ jobs:
           . .venv/bin/activate
           pip install -r requirements.txt
           ./gen_testsheets.py --writerbin lowriter
+          ./gen_testsheets.py --writerbin lowriter --evergreen
           zip -r all_sheets.zip test_sheets
+
       - uses: actions/upload-artifact@v4
         with:
           name: test_sheets
@@ -33,7 +35,7 @@ jobs:
       - uses: softprops/action-gh-release@v2
         if: startsWith(github.ref, 'refs/tags')
         with:
-          files: all_sheets.zip
+          files: evergreen_sheets/*.pdf
           make_latest: "true"
           generate_release_notes: true          
 

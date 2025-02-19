@@ -26,9 +26,13 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--full", default=False, action="store_true", help="Don't collapse headers")    
     parser.add_argument("--writerbin", type=str, default="oowriter", help="binary for libreoffice writer")
+    parser.add_argument("--evergreen", default=False, action="store_true", help="Don't append date to filenames")
     args = parser.parse_args()
 
-    outdir = sys.path[0] + "/test_sheets"
+    if args.evergreen:
+        outdir = sys.path[0] + "/evergreen_sheets"
+    else:
+        outdir = sys.path[0] + "/test_sheets"
 
     # walk the ranks, generating each sheet as we go.    
     docs = []
@@ -42,7 +46,7 @@ def main():
                       ('test_template.html', gen_test_content, '-test')]:
             revision = data.get('revision', datetime.strftime(datetime.now(), '%Y-%m-%d'))
             content = sheet[1](data, args.full)
-            filebase = ranks[rank][0] + sheet[2] + "-" + revision
+            filebase = ranks[rank][0] + sheet[2] + ("" if args.evergreen else "-" + revision)
             template = Template((Path(sys.path[0], sheet[0]).read_text()))
             with open(f"{outdir}/{filebase}.html", "w") as f:
                 f.write(template.safe_substitute(title=ranks[rank][1],
@@ -66,7 +70,8 @@ def main():
         data = read_inventory(Path(sys.path[0]) / "inventory.csv", tag)
         revision = data.get('revision', datetime.strftime(datetime.now(), '%Y-%m-%d'))
         content = genfunc(data, args.full)
-        filebase = basename + "-" + revision
+        filebase = basename + ("" if args.evergreen else "-" + revision)
+        #filebase = basename + "-" + revision
         template = Template((Path(sys.path[0], template_file).read_text()))
         with open(f"{outdir}/{filebase}.html", "w") as f:
             f.write(template.safe_substitute(content=content,
@@ -80,7 +85,10 @@ def main():
         docs.append(f"{outdir}/{filebase}.pdf")
 
     # Create the everything pdf
-    subprocess.run(['pdfunite', *docs, f"{outdir}/everything-{revision}.pdf"])
+    if args.evergreen:
+        subprocess.run(['pdfunite', *docs, f"{outdir}/everything.pdf"])
+    else:
+        subprocess.run(['pdfunite', *docs, f"{outdir}/everything-{revision}.pdf"])
     
     # create everything_doublesided pdf
     # the difference between this and the everything version is that each document will
@@ -115,7 +123,10 @@ def main():
         if pages % 2 == 1:
             new_docs.append(blank)
 
-    subprocess.run(['pdfunite', *new_docs, f"{outdir}/everything_doublesided-{revision}.pdf"])
+    if args.evergreen:
+        subprocess.run(['pdfunite', *new_docs, f"{outdir}/everything_doublesided.pdf"])
+    else:
+        subprocess.run(['pdfunite', *new_docs, f"{outdir}/everything_doublesided-{revision}.pdf"])
 
     os.unlink(blank)
 

@@ -3,6 +3,10 @@ test_sheets/*.pdf
 test_sheets/*.html
 test_sheets/*.docx
 all_sheets.zip
+evergreen_sheets/*.pdf
+evergreen_sheets/*.html
+evergreen_sheets/*.docx
+
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
