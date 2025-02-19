@@ -89,7 +89,7 @@ def main():
     # create a blank page that we can insert as necessary
     blank = f"{outdir}/blank.pdf"
     with open(f"{outdir}/blank.html", "w") as f:
-        f.write("""<html><head><style>
+        f.write("""<html lang="en"><head><style>
 @page {
     size: letter portrait;
     margin: 0.25in;
