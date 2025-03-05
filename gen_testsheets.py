@@ -7,6 +7,7 @@ import os
 import sys
 import subprocess
 from datetime import datetime
+import base64
 
 ranks = {
     'Y': ('yellow', '8th Kup / Yellow Belt'),
@@ -21,6 +22,9 @@ ranks = {
     '2': ('2nddan', '2nd Dan Black Belt'),
     '3': ('3rddan', '3rd Dan Black Belt')
 }
+
+qr_code_cache = {}
+
 
 def main():
     parser = argparse.ArgumentParser()
@@ -42,16 +46,19 @@ def main():
         # read the csv inventory
         data = read_inventory(Path(sys.path[0]) / "inventory.csv", rank)
 
+
         for sheet in [('techniques_template.html', gen_tech_content, '-techniques'),
                       ('test_template.html', gen_test_content, '-test')]:
             revision = data.get('revision', datetime.strftime(datetime.now(), '%Y-%m-%d'))
             content = sheet[1](data, args.full)
+            qr_codes = "<tr><td>" + "</td><td>".join([f'{k}<br><img src="data:img/png;base64, {str(v, "utf-8")}" alt="{k}">' for k,v in qr_code_cache.items()]) + "</td></tr>"
             filebase = ranks[rank][0] + sheet[2] + ("" if args.evergreen else "-" + revision)
-            template = Template((Path(sys.path[0], sheet[0]).read_text()))
+            template = Template((Path(sys.path[0], sheet[0]).read_text()))            
             with open(f"{outdir}/{filebase}.html", "w") as f:
                 f.write(template.safe_substitute(title=ranks[rank][1],
                                                  content=content,
-                                                 revision=revision))
+                                                 revision=revision,
+                                                 qr_codes=qr_codes))
             
             # generate the word doc & pdf
             #subprocess.run(['pandoc', f'{outdir}/{filebase}.html', "-o", f"{outdir}/{filebase}.docx"])
@@ -313,6 +320,7 @@ def fix_text(text):
 def read_inventory(invfile, rank):        
     # read the inventory and return the data for the given rank
     revision = "No Revision"
+    qr_codes = {}
     tables = []                
     with open(invfile, newline='') as csvfile:
         rdr = csv.DictReader(csvfile)
@@ -323,7 +331,14 @@ def read_inventory(invfile, rank):
                 # this is the test sheet revision
                 revision = row['Label']
                 continue
-
+            if row['Type'] == 'Q':
+                title, url = row['Label'].split('=', 1)
+                if title not in qr_code_cache:
+                    p = subprocess.run(["qrencode", '-t', 'PNG', '-o', '-', url],
+                                       stdout=subprocess.PIPE, check=True)
+                    qr_code_cache[title] = base64.b64encode(p.stdout)
+                
+                qr_codes[title] = qr_code_cache[title]
             if row['Type'] == '#' or row['Label'] == '' or row[rank] == '':
                 # ignore rows that don't have a label or are a comment, or
                 # are blank for the rank we're looking for.
@@ -352,7 +367,8 @@ def read_inventory(invfile, rank):
                                                                 'label': row['Label']})
 
     return {'revision': revision,
-            'tables': tables}
+            'tables': tables,
+            'qr_codes': qr_codes}
 
 
 if __name__ == "__main__":

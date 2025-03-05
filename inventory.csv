@@ -1,6 +1,6 @@
 Type,Label,Y,O,G,P,b,B,R,T,1,2,3,S,M
 #,The Type column indicates how the row will be used.,,,,,,,,,,,,,
-#,"#=comment, R=test revision, T=table, S=subtitle, H=header, and X=something on the test",,,,,,,,,,,,,
+#,"#=comment, R=test revision, T=table, S=subtitle, H=header, Q=QR Code, and X=something on the test",,,,,,,,,,,,,
 #,"The Label column is the text for whatever the row is (Table title, header, technique, etc). Row is ignored if it’s blank",,,,,,,,,,,,,
 #,"The Y, O, G, P, b, B, R, T, 1, 2, 3 columns are the configuration for the ranks (Yellow, Orange, etc)",,,,,,,,,,,,,
 #,"For comments and the test revision, the ranks are ignored.",,,,,,,,,,,,,
@@ -13,6 +13,12 @@ Type,Label,Y,O,G,P,b,B,R,T,1,2,3,S,M
 ,,,,,,,,,,,,,,
 #,Revision date for this sheet (should be in the format:  YYYY-MM-DD),,,,,,,,,,,,,
 R,2025-02-19,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+#,QR codes to show on the bottom of the sheet.  The format is:  title=url,,,,,,,,,,,,,
+Q,Waiver=https://connect.recsports.indiana.edu/membership/GetMembershipSummary?membershipProductId=fd9074d4-89f2-4899-b8f5-7d31e0bb1cf1,,,,,,,,,,,,,
+Q,Venmo=https://venmo.com/some-wacky-venmo-url,,,,,,,,,,,,,
+Q,Paypal=https://paypal.com/a-url-that-represents-the-paypal-address-thing,,,,,,,,,,,,,
+Q,Zelle=https://zelle.com/does-anyone-really-use-zelle?probably=not,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,
 T,Forms,X,X,X,X,X,X,X,X,X,X,X,,X
 ,Kicho IL Jang,N,X,X,X,X,X,X,X,X,X,X,,Y
