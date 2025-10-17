@@ -77,6 +77,13 @@ table .theader {
     white-space: nowrap;
 }
 
+.narrow_header {
+    width: 1px;
+    white-space: nowrap;
+    border-right-style: dotted;
+    border-left-style: dotted;
+}
+
 .score {
     width: 4em;
     white-space: nowrap;
@@ -95,12 +102,15 @@ p.revision {
         </style>
     </head>    
     <body>
-        <table border="1" width="100%" class="title">
-            <tr><th colspan="4">United Federation of Taekwondo Instructors - ${title}</th></tr>
-            <tr><td class="narrow">Name</td><td>&nbsp;</td>
-                <td class="narrow">Belt Size</td><td style="width: 1in;">&nbsp;</td></tr>
-            <tr><td class="narrow">Email</td><td>&nbsp;</td>
-                <td class="narrow">Date</td><td>&nbsp;</td></tr>
+        <table  width="100%" class="title">
+            <tr><th colspan="8">United Federation of Taekwondo Instructors - ${title}</th></tr>
+            <tr><td class="narrow">Name</td><td colspan="3" style="width: 37%;">&nbsp;</td>
+                <td class="narrow">Email</td><td colspan="3" style="width: 37%;">&nbsp;</td></tr>
+            <tr><td class="narrow">Belt Size</td><td style="width: 0.75in;">&nbsp;</td>
+                <td class="narrow">Date</td><td style="width: 1in;">&nbsp;</td>
+                <td class="narrow">Instructor</td><td colspan="3">&nbsp;</td>
+            
+            </tr>
         </table>
 
         ${content}
