@@ -7,6 +7,17 @@ import os
 import sys
 import subprocess
 from datetime import datetime
+import qrcode
+import base64
+import io
+
+qr_codes = {
+    'venmo_qr': "https://venmo.com/u/iutkd",
+    'paypal_qr': "https://paypal.me/iutkd",
+    'zelle_qr': "https://some.zelle.link/iutkd",
+    'website_qr': "https://iutkd.wordpress.com"
+}
+
 
 ranks = {
     'Y': ('yellow', '8th Kup / Yellow Belt'),
@@ -34,6 +45,20 @@ def main():
     else:
         outdir = sys.path[0] + "/test_sheets"
 
+    # generate the QR code data.
+    qr_images = {}
+    for k, v in qr_codes.items():
+        qr = qrcode.QRCode(version=None, box_size=3, border=2)
+        qr.add_data(v)
+        qr.make(fit=True)
+        img = qr.make_image()
+        img_bytes = io.BytesIO()
+        img.save(img_bytes, bitmap_format="png")
+        img_b64 = str(base64.encodebytes(img_bytes.getvalue()), encoding='utf-8').replace("\n", "")
+        qr_images[k] = f"""<img src="data:image/png;base64, {img_b64}" alt="{k}"/>"""
+
+
+
     # walk the ranks, generating each sheet as we go.    
     docs = []
     for rank in ranks:
@@ -51,7 +76,8 @@ def main():
             with open(f"{outdir}/{filebase}.html", "w") as f:
                 f.write(template.safe_substitute(title=ranks[rank][1],
                                                  content=content,
-                                                 revision=revision))
+                                                 revision=revision,
+                                                 **qr_images))
             
             # generate the word doc & pdf
             #subprocess.run(['pandoc', f'{outdir}/{filebase}.html', "-o", f"{outdir}/{filebase}.docx"])

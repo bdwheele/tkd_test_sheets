@@ -39,7 +39,7 @@ table.title tr, table.title td {
 caption {
     font-size: 12pt;
     text-align: center;
-    padding-top: 5pt;
+    padding-top: 3pt;
     font-weight: bold;
     break-after: avoid;
 }
@@ -103,6 +103,11 @@ p.revision {
     font-size: 8pt;
 }
 
+.qr_codes {
+    font-size: 8pt;
+    text-align: center;
+}
+
         </style>
     </head>    
     <body>
@@ -150,6 +155,11 @@ p.revision {
                 <td><p class="revision">Revision Date: ${revision}</p></td>        
             </tr>
         </table>
-        
+        <table width="100%">
+            <tr class="qr_codes"><td>${venmo_qr}<br/>Venmo</td>
+                                 <td>${paypal_qr}<br/>PayPal</td>
+                                 <td>${zelle_qr}<br/>Zelle</td>
+                                 <td>${website_qr}<br/>IUTKD Site</td></tr>            
+        </table>
     </body>
 </html>
