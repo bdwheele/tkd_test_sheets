@@ -38,6 +38,8 @@ def main():
     parser.add_argument("--full", default=False, action="store_true", help="Don't collapse headers")    
     parser.add_argument("--writerbin", type=str, default="oowriter", help="binary for libreoffice writer")
     parser.add_argument("--evergreen", default=False, action="store_true", help="Don't append date to filenames")
+    parser.add_argument("--qrcodes", default=False, action="store_true", help="generate QR codes")
+    parser.add_argument("--decorate_new", default=False, action="store_true", help="Decorate the new techniques")
     args = parser.parse_args()
 
     if args.evergreen:
@@ -70,14 +72,28 @@ def main():
         for sheet in [('techniques_template.html', gen_tech_content, '-techniques'),
                       ('test_template.html', gen_test_content, '-test')]:
             revision = data.get('revision', datetime.strftime(datetime.now(), '%Y-%m-%d'))
-            content = sheet[1](data, args.full)
+            content = sheet[1](data, args.full, args.decorate_new)
             filebase = ranks[rank][0] + sheet[2] + ("" if args.evergreen else "-" + revision)
             template = Template((Path(sys.path[0], sheet[0]).read_text()))
+
+            if(args.qrcodes):
+                qrt = Template("""    
+                    <table width="100%">
+            <tr class="qr_codes"><td>${venmo_qr}<br/>Venmo</td>
+                                 <td>${paypal_qr}<br/>PayPal</td>
+                                 <td>${zelle_qr}<br/>Zelle</td>
+                                 <td>${website_qr}<br/>IUTKD Site</td></tr>            
+        </table>
+                """)
+                qr_codes_text = qrt.safe_substitute(**qr_images)
+            else:
+                qr_codes_text = ""
+                               
             with open(f"{outdir}/{filebase}.html", "w") as f:
                 f.write(template.safe_substitute(title=ranks[rank][1],
                                                  content=content,
                                                  revision=revision,
-                                                 **qr_images))
+                                                 qr_codes=qr_codes_text))
             
             # generate the word doc & pdf
             #subprocess.run(['pandoc', f'{outdir}/{filebase}.html', "-o", f"{outdir}/{filebase}.docx"])
@@ -158,7 +174,7 @@ def main():
 
 
 
-def gen_test_content(data, full=False):
+def gen_test_content(data, full=False, decorate_new=False):
     """Generate the content for a test sheet"""
     html_tables = []
     for tdata in data['tables']:
@@ -188,7 +204,8 @@ def gen_test_content(data, full=False):
                 label = nbsp(t['label'])
                 if t['type'] == 'N':
                     # new technique
-                    label = f'<span class="new">{label}</span>'
+                    if decorate_new:
+                        label = f'<span class="new">{label}</span>'
                 elif t['type'] != 'X':
                     label = f'{label} ({t["type"]})'
 
@@ -208,7 +225,7 @@ def gen_test_content(data, full=False):
     return "\n".join(html_tables)
 
 
-def gen_tech_content(data, full=False):
+def gen_tech_content(data, full=False, decorate_new=False):
     "generate technique sheet content"    
     tech_tables = []
     for tdata in data['tables']:        
@@ -229,7 +246,8 @@ def gen_tech_content(data, full=False):
                 label = t['label']
                 if t['type'] == 'N':
                     # new technique
-                    label = f'<span class="new">{label}</span>'
+                    if decorate_new:
+                        label = f'<span class="new">{label}</span>'                        
                 elif t['type'] != 'X':
                     label = f'{label} ({t["type"]})'
 
