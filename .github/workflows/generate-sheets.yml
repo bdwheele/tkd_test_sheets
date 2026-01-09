@@ -24,8 +24,8 @@ jobs:
           python -m venv .venv
           . .venv/bin/activate
           pip install -r requirements.txt
-          ./gen_testsheets.py --writerbin lowriter
-          ./gen_testsheets.py --writerbin lowriter --evergreen
+          ./gen_testsheets.py --writerbin lowriter --qrcodes --decorate_new
+          ./gen_testsheets.py --writerbin lowriter --evergreen --qrcodes --decorate_new
           zip -r all_sheets.zip test_sheets
 
       - uses: actions/upload-artifact@v4
