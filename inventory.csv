@@ -5,14 +5,14 @@ Type,Label,Y,O,G,P,b,B,R,T,1,2,3,S,M
 #,"The Y, O, G, P, b, B, R, T, 1, 2, 3 columns are the configuration for the ranks (Yellow, Orange, etc)",,,,,,,,,,,,,
 #,"For comments and the test revision, the ranks are ignored.",,,,,,,,,,,,,
 #,"For Tables and Subtitles, the valid values are:  X=show, blank=don’t show",,,,,,,,,,,,,
-#,"For Headers:  X=show, C=collapse and only show new techniques, blank=don’t show",,,,,,,,,,,,,
+#,"For Headers:  X=show, C=collapse and only show new techniques, O=mark as optional and collapse as in C, blank=don’t show",,,,,,,,,,,,,
 #,"For techniques:  X=show, N=show as new technique, blank=don’t show, other=show value in parens",,,,,,,,,,,,,
 ,,,,,,,,,,,,,,
 #,The S column is used to generate the supplemental techniques sheet.  These are techniques that are not on a test but the student is expected to know.,,,,,,,,,,,,,
 #,"Unlike the other columns, the value for the technique rows is the rank the student should know it:  Y, O, G, P, b, B, R, T, 1, 2,3",,,,,,,,,,,,,
 ,,,,,,,,,,,,,,
 #,Revision date for this sheet (should be in the format:  YYYY-MM-DD),,,,,,,,,,,,,
-R,2025-10-16,,,,,,,,,,,,,
+R,2026-01-13,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,
 T,Forms,X,X,X,X,X,X,X,X,X,X,X,,X
 ,Kicho IL Jang,N,X,X,X,X,X,X,X,X,X,X,,Y
@@ -107,8 +107,8 @@ H,Sparring Style Blocks & Strikes,,,,,,,,,,,C,,
 ,Upper Cut Strike,,,,N,X,X,X,X,X,X,X,P,P
 ,Spear Hand Strike,,,,N,X,X,X,X,X,X,X,P,P
 H,Sparring Style Blocks,,,,X,C,C,C,C,C,C,,X,X
-,Outside Low Block,,,,N,X,X,X,X,X,X,X,P,P
-,Inside Low Block,,,,N,X,X,X,X,X,X,X,P,P
+,Low Outside Block,,,,N,X,X,X,X,X,X,X,P,P
+,Low Inside Block,,,,N,X,X,X,X,X,X,X,P,P
 ,Outside Middle Block,,,,N,X,X,X,X,X,X,X,P,P
 ,Inside Middle Block,,,,N,X,X,X,X,X,X,X,P,P
 ,High Block,,,,N,X,X,X,X,X,X,X,P,P
@@ -305,7 +305,8 @@ T,Body Movement Drill with Kicks,,,,,,X,,,,,,,
 T,Special,,X,X,X,X,X,X,X,X,X,X,,
 ,Limited Teaching Experience,,,,,,,X,,,,,,
 ,Demonstrated Teaching Experience,,,,,,,,X,X,,,,
-,Teaching Experience,,,,,,,,,,20 Sessions,30,,
+,Teaching Experience (20 Sessions),,,,,,,,,,X,,,
+,Teaching Experience (30 Sessions),,,,,,,,,,,X,,
 ,Kunja Paper,,,,,,,,,X,X,X,,
 ,Optional Breaking: Front Kick,,X,,,,,,,,,,,
 ,Optional Breaking: Sliding Side Kick,,,X,,,,,,,,,,
